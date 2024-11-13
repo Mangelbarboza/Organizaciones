@@ -3,6 +3,8 @@ package Controladora;
 import Vista.MenuPrincipal;
 import Controladora.controladora;
 
+@SuppressWarnings("unused")   // Esto es para quitar las advertencias de que no se usa una clase
+
 public class Main {
 
     public static void main(String[] args) {
@@ -12,6 +14,7 @@ public class Main {
         menu.setVisible(true);
         
         // Crear controladora
+      
         controladora controller = new controladora(menu);
        
     }
