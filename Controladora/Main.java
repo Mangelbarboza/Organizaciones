@@ -5,7 +5,7 @@ import Controladora.controladora;
 
 @SuppressWarnings("unused")   // Esto es para quitar las advertencias de que no se usa una clase
 
-public class Main {
+public class Main {   // Main
 
     public static void main(String[] args) {
     

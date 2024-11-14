@@ -3,7 +3,7 @@ package Controladora;
 import Vista.MenuPrincipal;
 import javax.swing.*;
 
-public class controladora {
+public class controladora {   // Controladora
 
     private MenuPrincipal menu;
 

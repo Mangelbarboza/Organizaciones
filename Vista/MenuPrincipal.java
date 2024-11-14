@@ -3,7 +3,7 @@ package Vista;
 import javax.swing.*;
 import java.awt.*;
 
-public class MenuPrincipal extends JFrame {
+public class MenuPrincipal extends JFrame {   // UI
     public JButton botonSalarioNeto, botonVacaciones, botonAguinaldo, botonLiquidacion, botonSalir;
     public JTextField campoNombre, campoPuesto, campoSalario, campoAnios;
 

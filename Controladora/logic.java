@@ -1,5 +1,5 @@
 package Controladora;
 
-public class logic {
+public class logic {   // Logic 
     
 }
