@@ -3,60 +3,76 @@ package Vista;
 import javax.swing.*;
 import java.awt.*;
 
-public class MenuPrincipal extends JFrame {   // UI
-    public JButton botonSalarioNeto, botonVacaciones, botonAguinaldo, botonLiquidacion, botonSalir;
-    public JTextField campoNombre, campoPuesto, campoSalario, campoAnios;
+public class MenuPrincipal extends JFrame {   
+    public JButton botonSalarioNeto, botonVacaciones, botonAguinaldo, botonSalir;
+    public JButton botonRegresarSalario, botonRegresarVacaciones, botonRegresarAguinaldo;
+    public JPanel panelMenu, panelSalarioNeto, panelVacaciones, panelAguinaldo;
 
     public MenuPrincipal() {
         setTitle("Sistema de Cálculo Laboral");
         setSize(500, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        setLayout(new CardLayout());  // Usaremos CardLayout para cambiar de paneles fácilmente
 
-        getContentPane().setBackground(new Color(245, 222, 179));
+        initMenuPanel();
+        initSalarioPanel();
+        initVacacionesPanel();
+        initAguinaldoPanel();
 
-        JPanel panelBotones = new JPanel(new GridLayout(5, 1, 10, 10));
-        panelBotones.setBackground(new Color(245, 222, 179));
-        panelBotones.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
+        add(panelMenu, "menu");        // Agrega el panel de menú principal
+        add(panelSalarioNeto, "salarioNeto");
+        add(panelVacaciones, "vacaciones");
+        add(panelAguinaldo, "aguinaldo");
+    }
+
+    private void initMenuPanel() {
+        panelMenu = new JPanel(new GridLayout(5, 1, 10, 10));
+        panelMenu.setBackground(new Color(245, 222, 179));
 
         // Crear botones para las opciones
         botonSalarioNeto = crearBoton("Calcular Salario Neto");
         botonVacaciones = crearBoton("Calcular Vacaciones");
         botonAguinaldo = crearBoton("Calcular Aguinaldo");
-        botonLiquidacion = crearBoton("Calcular Liquidación por Despido");
         botonSalir = crearBoton("Salir");
 
-        panelBotones.add(botonSalarioNeto);
-        panelBotones.add(botonVacaciones);
-        panelBotones.add(botonAguinaldo);
-        panelBotones.add(botonLiquidacion);
-        panelBotones.add(botonSalir);
+        panelMenu.add(botonSalarioNeto);
+        panelMenu.add(botonVacaciones);
+        panelMenu.add(botonAguinaldo);
+        panelMenu.add(botonSalir);
+    }
 
-        add(panelBotones, BorderLayout.CENTER);
+    private void initSalarioPanel() {
+        panelSalarioNeto = new JPanel(new BorderLayout());
+        panelSalarioNeto.setBackground(new Color(220, 245, 255));
 
-        // Panel para los datos básicos del trabajador
-        JPanel panelDatos = new JPanel(new GridLayout(4, 2, 10, 10));
-        panelDatos.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
-        panelDatos.setBackground(new Color(245, 222, 179));
+        JLabel label = new JLabel("Cálculo de Salario Neto", SwingConstants.CENTER);
+        panelSalarioNeto.add(label, BorderLayout.CENTER);
 
-        // Campos para ingresar datos del trabajador
-        panelDatos.add(new JLabel("Nombre del Trabajador:"));
-        campoNombre = new JTextField();
-        panelDatos.add(campoNombre);
+        botonRegresarSalario = crearBoton("Volver al Menú");
+        panelSalarioNeto.add(botonRegresarSalario, BorderLayout.SOUTH);
+    }
 
-        panelDatos.add(new JLabel("Puesto:"));
-        campoPuesto = new JTextField();
-        panelDatos.add(campoPuesto);
+    private void initVacacionesPanel() {
+        panelVacaciones = new JPanel(new BorderLayout());
+        panelVacaciones.setBackground(new Color(240, 255, 220));
 
-        panelDatos.add(new JLabel("Salario Bruto:"));
-        campoSalario = new JTextField();
-        panelDatos.add(campoSalario);
+        JLabel label = new JLabel("Cálculo de Vacaciones", SwingConstants.CENTER);
+        panelVacaciones.add(label, BorderLayout.CENTER);
 
-        panelDatos.add(new JLabel("Años Trabajados:"));
-        campoAnios = new JTextField();
-        panelDatos.add(campoAnios);
+        botonRegresarVacaciones = crearBoton("Volver al Menú");
+        panelVacaciones.add(botonRegresarVacaciones, BorderLayout.SOUTH);
+    }
 
-        add(panelDatos, BorderLayout.NORTH);
+    private void initAguinaldoPanel() {
+        panelAguinaldo = new JPanel(new BorderLayout());
+        panelAguinaldo.setBackground(new Color(255, 235, 220));
+
+        JLabel label = new JLabel("Cálculo de Aguinaldo", SwingConstants.CENTER);
+        panelAguinaldo.add(label, BorderLayout.CENTER);
+
+        botonRegresarAguinaldo = crearBoton("Volver al Menú");
+        panelAguinaldo.add(botonRegresarAguinaldo, BorderLayout.SOUTH);
     }
 
     private JButton crearBoton(String texto) {

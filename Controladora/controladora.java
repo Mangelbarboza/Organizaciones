@@ -2,8 +2,9 @@ package Controladora;
 
 import Vista.MenuPrincipal;
 import javax.swing.*;
+import java.awt.*;
 
-public class controladora {   // Controladora
+public class controladora {
 
     private MenuPrincipal menu;
 
@@ -13,15 +14,17 @@ public class controladora {   // Controladora
     }
 
     private void initController() {
-        menu.botonSalarioNeto.addActionListener(e -> mostrarMensaje("Cálculo de Salario Neto seleccionado"));
-        menu.botonVacaciones.addActionListener(e -> mostrarMensaje("Cálculo de Vacaciones seleccionado"));
-        menu.botonAguinaldo.addActionListener(e -> mostrarMensaje("Cálculo de Aguinaldo seleccionado"));
-        menu.botonLiquidacion.addActionListener(e -> mostrarMensaje("Cálculo de Liquidación por Despido seleccionado"));
-        menu.botonSalir.addActionListener(e -> salirPrograma());
-    }
+        CardLayout layout = (CardLayout) menu.getContentPane().getLayout();
 
-    private void mostrarMensaje(String mensaje) {
-        JOptionPane.showMessageDialog(menu, mensaje);
+        menu.botonSalarioNeto.addActionListener(e -> layout.show(menu.getContentPane(), "salarioNeto"));
+        menu.botonVacaciones.addActionListener(e -> layout.show(menu.getContentPane(), "vacaciones"));
+        menu.botonAguinaldo.addActionListener(e -> layout.show(menu.getContentPane(), "aguinaldo"));
+        menu.botonSalir.addActionListener(e -> salirPrograma());
+
+        // Botones de regresar en cada panel
+        menu.botonRegresarSalario.addActionListener(e -> layout.show(menu.getContentPane(), "menu"));
+        menu.botonRegresarVacaciones.addActionListener(e -> layout.show(menu.getContentPane(), "menu"));
+        menu.botonRegresarAguinaldo.addActionListener(e -> layout.show(menu.getContentPane(), "menu"));
     }
 
     private void salirPrograma() {
