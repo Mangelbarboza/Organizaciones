@@ -1,6 +1,14 @@
 package Modelo;
-
+import Vista.MenuPrincipal;
 public class logic1 {   // Logic 
+
+    MenuPrincipal UI;
+
+    public logic1(MenuPrincipal UI){   // Constructor
+
+        this.UI = UI;
+
+    }
    /*    private static final double salarioBruto = 100000; // Aca podemos cambiar el salario carajillos
     
     // Porcentajes de deducción para el trabajador
