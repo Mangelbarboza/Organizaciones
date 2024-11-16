@@ -10,6 +10,14 @@ public class MenuPrincipal extends JFrame {
     public JButton botonRegresarSalario, botonRegresarVacaciones, botonRegresarAguinaldo;
     public JPanel panelMenu, panelSalarioNeto, panelVacaciones, panelAguinaldo;
 
+    // oBJETOS DEL PANEL X
+
+
+
+
+
+    
+
     public MenuPrincipal() {
         setTitle("Sistema de Cálculo Laboral");
         setSize(500, 400);

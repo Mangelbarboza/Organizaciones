@@ -26,6 +26,7 @@ public class controladora {
         menu.botonRegresarVacaciones.addActionListener(e -> layout.show(menu.getContentPane(), "menu"));
         menu.botonRegresarAguinaldo.addActionListener(e -> layout.show(menu.getContentPane(), "menu"));
     }
+    
 
     private void salirPrograma() {
         int confirm = JOptionPane.showConfirmDialog(menu, "¿Está seguro de que desea salir?", "Confirmar Salida", JOptionPane.YES_NO_OPTION);

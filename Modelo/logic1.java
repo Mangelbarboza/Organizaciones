@@ -7,7 +7,7 @@ public class logic1 {   // Logic
     public logic1(MenuPrincipal UI){   // Constructor
 
         this.UI = UI;
-
+        
     }
    /*    private static final double salarioBruto = 100000; // Aca podemos cambiar el salario carajillos
     
