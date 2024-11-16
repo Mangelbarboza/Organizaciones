@@ -1,4 +1,4 @@
-package Controladora;
+package Modelo;
 
 public class logic1 {   // Logic 
    /*    private static final double salarioBruto = 100000; // Aca podemos cambiar el salario carajillos
