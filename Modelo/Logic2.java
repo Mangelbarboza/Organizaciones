@@ -1,41 +1,20 @@
 package Modelo;
 
 public class Logic2 {
-    /*  private static final int DIAS_VACACIONES_ANUAL = 12; // Días de vacaciones por año completo
-    private static final int DIAS_POR_ANO = 360; // Días laborales por año (excluyendo fines de semana y feriados)
-    public static void main(String[] args) {
-    
+    private static final int DIAS_VACACIONES_ANUAL = 12; //los dias de vacaciones por año completo
+    private static final int DIAS_POR_ANIO = 360; //excluyendo fines de semana y feriados
 
-        Scanner scanner = new Scanner(System.in);
-
-        // Entrada de datos
-        System.out.print("Ingrese el salario mensual: ");
-        double salarioMensual = scanner.nextDouble();
-
-        System.out.print("Ingrese la cantidad de días trabajados: ");
-        int diasTrabajados = scanner.nextInt();
-
-        // Calcular los días de vacaciones proporcionales
-        int diasVacaciones = calcularDiasVacaciones(diasTrabajados);
-
-        // Calcular el pago de vacaciones
-        double pagoVacaciones = calcularPagoVacaciones(salarioMensual, diasVacaciones);
-
-        // Mostrar resultados
-        System.out.println("Días de Vacaciones correspondientes: " + diasVacaciones);
-        System.out.println("Pago por Vacaciones: " + pagoVacaciones);
-
-        scanner.close();
+    //Calculamos dias de vacaciones 
+    public static int calcularDiasVacaciones(Empleado empleado){
+        //usamos el diasTrabajados de empleado
+        return (empleado.getDiasTrabajados()*DIAS_VACACIONES_ANUAL)/DIAS_POR_ANIO; 
     }
 
-    // Método para calcular los días de vacaciones proporcionales
-    public static int calcularDiasVacaciones(int diasTrabajados) {
-        return (diasTrabajados * DIAS_VACACIONES_ANUAL) / DIAS_POR_ANO;
+    //Metodo para calcular el pago de vacaciones
+    public static double calcularPagoVaciones(Empleado empleado){
+        //putos del empleado atributo salarioMensual
+        double salarioDiario = empleado.getSalarioMensual()/30; //suponiendo 30 días en un mes
+        int diasVacaciones = calcularDiasVacaciones(empleado);
+        return salarioDiario * diasVacaciones; 
     }
-
-    // Método para calcular el pago de vacaciones
-    public static double calcularPagoVacaciones(double salarioMensual, int diasVacaciones) {
-        double salarioDiario = salarioMensual / 30; // Asumimos 30 días en un mes
-        return salarioDiario * diasVacaciones;
-    } */
 }
