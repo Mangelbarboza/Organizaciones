@@ -19,6 +19,12 @@ public class MenuPrincipal extends JFrame {
     private JTextField diasTrabajadosField, vacacionesTomadasField, fechaInicioVacacionesField, fechaFinVacacionesField;
     private JTextField fechaDespidoField, causaDespidoField, aguinaldoPendienteField, diasNoRemuneradosField;
 
+    //Nai pero aun tengo duda
+    private JTextField salarioMensualField;
+    private JLabel resultadoDiasLabel, resultadoPagoLabel;
+    public JButton botonCalcularVacaciones;
+
+
     public MenuPrincipal() {
         setTitle("Sistema de Cálculo Laboral");
         setSize(500, 600);
@@ -97,17 +103,39 @@ public class MenuPrincipal extends JFrame {
     }
 
     private void initVacacionesPanel() {
-        panelVacaciones = new JPanel(new BorderLayout());
-        panelVacaciones.setBackground(new Color(255, 255, 255));
-        panelVacaciones.setBorder(createRoundedBorder());
+         panelVacaciones = new JPanel();
+         panelVacaciones.setLayout(new BoxLayout(panelVacaciones, BoxLayout.Y_AXIS));
+         panelVacaciones.setBackground(new Color(255, 255, 255));
+         panelVacaciones.setBorder(createRoundedBorder());
 
-        JLabel label = new JLabel("Cálculo de Vacaciones", SwingConstants.CENTER);
-        label.setFont(new Font("SansSerif", Font.BOLD, 18));
-        label.setForeground(new Color(50, 50, 50));
-        panelVacaciones.add(label, BorderLayout.CENTER);
+         JLabel label = new JLabel("Cálculo de Vacaciones", SwingConstants.CENTER);
+         label.setFont(new Font("SansSerif", Font.BOLD, 18));
+         label.setForeground(new Color(50, 50, 50));
+         panelVacaciones.add(label);
 
-        botonRegresarVacaciones = crearBoton("Volver al Menú");
-        panelVacaciones.add(botonRegresarVacaciones, BorderLayout.SOUTH);
+          // Campo de entrada para salario mensual
+         salarioMensualField = new JTextField();
+         panelVacaciones.add(new JLabel("Salario Mensual:"));
+         panelVacaciones.add(salarioMensualField);
+
+         // Campo de entrada para días trabajados
+         diasTrabajadosField = new JTextField();
+         panelVacaciones.add(new JLabel("Días Trabajados:"));
+         panelVacaciones.add(diasTrabajadosField);
+
+         // Botón para calcular vacaciones
+         botonCalcularVacaciones = crearBoton("Calcular Vacaciones");
+         panelVacaciones.add(botonCalcularVacaciones);
+
+         // Etiquetas para mostrar resultados
+         resultadoDiasLabel = new JLabel("Días de Vacaciones: ");
+         resultadoPagoLabel = new JLabel("Pago de Vacaciones: ");
+         panelVacaciones.add(resultadoDiasLabel);
+         panelVacaciones.add(resultadoPagoLabel);
+
+         //Boton para regresar al menu pue
+         botonRegresarVacaciones = crearBoton("Volver al Menú");
+         panelVacaciones.add(botonRegresarVacaciones, BorderLayout.SOUTH);
     }
 
     private void initAguinaldoPanel() {
@@ -203,4 +231,22 @@ public class MenuPrincipal extends JFrame {
     public JButton getBotonTerminarContinuar() {
         return botonTerminarContinuar;
     }
+
+    //Gett y Set publicos Nai
+    public JTextField getSalarioMensualField() {
+        return salarioMensualField;
+    }
+    
+    public JTextField getDiasTrabajadosField() {
+        return diasTrabajadosField;
+    }
+    
+    public JLabel getResultadoDiasLabel() {
+        return resultadoDiasLabel;
+    }
+    
+    public JLabel getResultadoPagoLabel() {
+        return resultadoPagoLabel;
+    }
+    
 }

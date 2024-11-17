@@ -1,6 +1,9 @@
 package Controladora;
 
 import Vista.MenuPrincipal;
+import Modelo.Empleado;
+import Modelo.Logic2;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -25,6 +28,30 @@ public class controladora {
         menu.botonRegresarSalario.addActionListener(e -> layout.show(menu.getContentPane(), "menu"));
         menu.botonRegresarVacaciones.addActionListener(e -> layout.show(menu.getContentPane(), "menu"));
         menu.botonRegresarAguinaldo.addActionListener(e -> layout.show(menu.getContentPane(), "menu"));
+
+        // Acción del botón de calcular vacaciones
+        menu.botonCalcularVacaciones.addActionListener(e -> calcularVacaciones());
+
+    }
+    private void calcularVacaciones() {//Nai
+        try {
+            double salarioMensual = Double.parseDouble(menu.getSalarioMensualField().getText());
+            int diasTrabajados = Integer.parseInt(menu.getDiasTrabajadosField().getText());
+    
+            // Crear el objeto Empleado con los datos del formulario
+            Empleado empleado = new Empleado(0, salarioMensual, 0, diasTrabajados, 0, false);
+    
+            // Realizar el cálculo de vacaciones usando Logic2
+            int diasVacaciones = Logic2.calcularDiasVacaciones(empleado);
+            double pagoVacaciones = Logic2.calcularPagoVaciones(empleado);
+    
+            // Mostrar los resultados en la interfaz
+            menu.getResultadoDiasLabel().setText("Días de Vacaciones: " + diasVacaciones);
+            menu.getResultadoPagoLabel().setText("Pago de Vacaciones: " + pagoVacaciones);
+    
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(menu, "Por favor, ingrese valores numéricos válidos.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
     
 

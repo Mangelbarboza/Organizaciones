@@ -1,7 +1,7 @@
 package Modelo;
 
 public class Empleado {
-    // Atributos básicos para los cálculos
+    // Atributos  para los cálculos
     private double salarioDiario;
     private double salarioMensual;
     private int aniosTrabajados;
@@ -9,7 +9,7 @@ public class Empleado {
     private double horasExtras;
     private boolean aplicaRenta;
 
-    // Constructor
+    
     public Empleado(double salarioDiario, double salarioMensual, int aniosTrabajados, int diasTrabajados, double horasExtras, boolean aplicaRenta) {
         this.salarioDiario = salarioDiario;
         this.salarioMensual = salarioMensual;
@@ -19,7 +19,7 @@ public class Empleado {
         this.aplicaRenta = aplicaRenta;
     }
 
-    // Getters y Setters
+    
     public double getSalarioDiario() {
         return salarioDiario;
     }
