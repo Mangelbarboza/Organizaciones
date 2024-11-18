@@ -65,11 +65,15 @@ public class Controlador {
             int diasTrabajados = Integer.parseInt(menu.getDiasTrabajadosField().getText());
 
             // Crear instancia de Empleado con los datos ingresados
-            Empleado empleado = new Empleado(nombre, cedula, puesto, puesto, diasTrabajados, diasTrabajados, salarioBruto, diasTrabajados, diasTrabajados, diasTrabajados, false);
+            Empleado empleado = new Empleado(nombre, cedula, puesto, null, 0, salarioBruto, salarioBruto, diasTrabajados, 0, 0, false);
+
+
 
             JOptionPane.showMessageDialog(menu, "Datos del empleado guardados correctamente.");
 
-            // Ahora puedes almacenar el objeto `empleado` para otros cálculos o usarlo en la aplicación
+            /// Cambiar al panel de menú principal
+        CardLayout layout = (CardLayout) menu.getContentPane().getLayout();
+        layout.show(menu.getContentPane(), "menu");  // Cambia al menú principal
 
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(menu, "Por favor, ingrese valores numéricos válidos.", "Error", JOptionPane.ERROR_MESSAGE);

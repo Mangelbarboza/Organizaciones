@@ -3,11 +3,7 @@ package Vista;
 import javax.swing.*;
 import javax.swing.border.Border;
 
-import Modelo.Empleado;
-
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class MenuPrincipal extends JFrame {
     private CardLayout cardLayout;
@@ -52,13 +48,6 @@ public class MenuPrincipal extends JFrame {
 
         getContentPane().setBackground(new Color(240, 240, 240));
 
-        // Acción del botón "Terminar y Continuar" para ir al panel de menú
-        botonTerminarContinuar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cardLayout.show(getContentPane(), "menu"); // Muestra el menú principal
-            }
-        });
     }
 
     private void initMenuPanel() {
