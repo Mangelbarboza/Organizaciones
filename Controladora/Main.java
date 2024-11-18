@@ -6,7 +6,7 @@ import Vista.MenuPrincipal;
 
 public class Main {  
 
-   //afwfe dfwfwqv gfg
+   
 
     public static void main(String[] args) {
     

@@ -67,7 +67,7 @@ public class Controlador {
             int diasTrabajados = Integer.parseInt(menu.getDiasTrabajadosField().getText());
 
             // Crear instancia de Empleado con los datos ingresados
-            Empleado empleado = new Empleado(nombre, cedula, puesto, 0, salarioBruto, salarioBruto, diasTrabajados, 0, 0, diasTrabajados, false);
+            Empleado empleado = new Empleado(nombre, cedula, puesto, puesto, diasTrabajados, diasTrabajados, salarioBruto, diasTrabajados, diasTrabajados, diasTrabajados, false);
 
 
 

@@ -7,6 +7,7 @@ public class Empleado {
 
     // Información laboral
     private String puesto;
+
     // Atributos para cálculos 
     private double salarioDiario;
     private double salarioMensual;
@@ -18,7 +19,7 @@ public class Empleado {
 
     // Constructor
     public Empleado(String nombre, String cedula, String puesto, 
-                    Object object, double salarioDiario, double salarioMensual, double salarioBruto, 
+                     double salarioDiario, double salarioMensual, double salarioBruto, 
                     int aniosTrabajados, int diasTrabajados, double horasExtras, boolean aplicaRenta) {
         this.nombre = nombre;
         this.cedula = cedula;
