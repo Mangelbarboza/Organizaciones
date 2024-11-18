@@ -124,9 +124,17 @@ public class MenuPrincipal extends JFrame {
         label.setForeground(new Color(70, 70, 70));
         panelVacaciones.add(label);
 
+<<<<<<< HEAD
         salarioMensualField = new RoundedTextField("Salario mensual");
         panelVacaciones.add(new JLabel("Salario Mensual:"));
         panelVacaciones.add(salarioMensualField);
+=======
+          // Campo de entrada para salario mensual
+         salarioMensualField = new JTextField();
+         salarioMensualField.setText("");
+         panelVacaciones.add(new JLabel("Salario Mensual:"));
+         panelVacaciones.add(salarioMensualField);
+>>>>>>> d9dbcfd15ccb19e8e0bf2d2138cafcf8247435cb
 
         botonCalcularVacaciones = new RoundedButton("Calcular Vacaciones");
         panelVacaciones.add(botonCalcularVacaciones);
