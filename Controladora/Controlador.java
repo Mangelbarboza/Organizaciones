@@ -58,7 +58,7 @@ public class Controlador {
     private void guardarDatosEmpleado() {
 
         System.out.printf("Hola desde boton continuar");
-        try {
+        
             // Obtener los datos de los campos de entrada desde MenuPrincipal
             String nombre = menu.getNombreField().getText();
             String cedula = menu.getCedulaField().getText();
@@ -66,11 +66,10 @@ public class Controlador {
             double salarioBruto = Double.parseDouble(menu.getSalarioBrutoField().getText());
             int diasTrabajados = Integer.parseInt(menu.getDiasTrabajadosField().getText());
 
-            // imprimir antes de crear el objeto empleado:
-            System.out.println("Nombre: " + nombre + " Cedula: " + cedula + " Puesto: " + puesto + " Salario Bruto: " + salarioBruto + " Dias trabajados: " + diasTrabajados);
-
             // Crear instancia de Empleado con los datos ingresados
-            Empleado empleado = new Empleado(nombre, cedula, puesto, salarioBruto, 0.0, 0, 0, diasTrabajados, 0, false);
+            Empleado empleado = new Empleado(nombre, cedula, puesto, diasTrabajados, diasTrabajados, salarioBruto, diasTrabajados, diasTrabajados, diasTrabajados, false);
+
+
 
             JOptionPane.showMessageDialog(menu, "Datos del empleado guardados correctamente.");
 
@@ -78,9 +77,7 @@ public class Controlador {
         CardLayout layout = (CardLayout) menu.getContentPane().getLayout();
         layout.show(menu.getContentPane(), "menu");  // Cambia al menú principal
 
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(menu, "Por favor, ingrese valores numéricos válidos.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+        
     }
     
 
