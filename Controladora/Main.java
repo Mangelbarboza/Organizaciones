@@ -6,9 +6,9 @@ import Vista.MenuPrincipal;
 
 public class Main {  
 
-   //afwfe dfwfwqv 
+   //afwfe dfwfwqv gfg
 
-    public static <Controlador> void main(String[] args) {
+    public static void main(String[] args) {
     
         // Iniciar interfaz
         MenuPrincipal menu = new MenuPrincipal();
