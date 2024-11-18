@@ -1,6 +1,7 @@
 package Modelo;
 
 public class Logic2 {
+    
     private static final int DIAS_VACACIONES_ANUAL = 12; //los dias de vacaciones por año completo
     private static final int DIAS_POR_ANIO = 360; //excluyendo fines de semana y feriados
 
