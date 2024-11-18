@@ -105,7 +105,7 @@ public class MenuPrincipal extends JFrame {
 
           // Campo de entrada para salario mensual
          salarioMensualField = new JTextField();
-         salarioMensualField.setText("Salario mensual");
+         salarioMensualField.setText("");
          panelVacaciones.add(new JLabel("Salario Mensual:"));
          panelVacaciones.add(salarioMensualField);
 
