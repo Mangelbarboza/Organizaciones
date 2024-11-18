@@ -56,6 +56,8 @@ public class Controlador {
         }
     }
     private void guardarDatosEmpleado() {
+
+        System.out.printf("Hola desde boton continuar");
         try {
             // Obtener los datos de los campos de entrada desde MenuPrincipal
             String nombre = menu.getNombreField().getText();
