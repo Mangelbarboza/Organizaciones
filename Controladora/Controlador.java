@@ -77,7 +77,7 @@ public class Controlador {
         CardLayout layout = (CardLayout) menu.getContentPane().getLayout();
         layout.show(menu.getContentPane(), "menu");  // Cambia al menú principal
 
-        
+      
     }
     
 

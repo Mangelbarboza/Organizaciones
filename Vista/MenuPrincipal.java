@@ -109,12 +109,6 @@ public class MenuPrincipal extends JFrame {
          panelVacaciones.add(new JLabel("Salario Mensual:"));
          panelVacaciones.add(salarioMensualField);
 
-         // Campo de entrada para días trabajados
-         diasTrabajadosField = new JTextField();
-         diasTrabajadosField.setText("Dias trabajados");
-         panelVacaciones.add(new JLabel("Días Trabajados:"));
-        
-         panelVacaciones.add(diasTrabajadosField);
 
          // Botón para calcular vacaciones
          botonCalcularVacaciones = crearBoton("Calcular Vacaciones");
