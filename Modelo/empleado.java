@@ -17,8 +17,7 @@ public class Empleado {
     private boolean aplicaRenta;
 
     // Constructor
-    public Empleado(String nombre, String cedula, String puesto, 
-                    Object object, double salarioDiario, double salarioMensual, double salarioBruto, 
+    public Empleado(String nombre, String cedula, String puesto, double salarioDiario, double salarioMensual, double salarioBruto, 
                     int aniosTrabajados, int diasTrabajados, double horasExtras, boolean aplicaRenta) {
         this.nombre = nombre;
         this.cedula = cedula;

@@ -105,12 +105,15 @@ public class MenuPrincipal extends JFrame {
 
           // Campo de entrada para salario mensual
          salarioMensualField = new JTextField();
+         salarioMensualField.setText("Salario mensual");
          panelVacaciones.add(new JLabel("Salario Mensual:"));
          panelVacaciones.add(salarioMensualField);
 
          // Campo de entrada para días trabajados
          diasTrabajadosField = new JTextField();
+         diasTrabajadosField.setText("Dias trabajados");
          panelVacaciones.add(new JLabel("Días Trabajados:"));
+        
          panelVacaciones.add(diasTrabajadosField);
 
          // Botón para calcular vacaciones
@@ -149,9 +152,11 @@ public class MenuPrincipal extends JFrame {
 
         // Campos de texto esenciales
     nombreField = new JTextField();
+    nombreField.setText("Nombre text fields");
     cedulaField = new JTextField();
     puestoField = new JTextField();
     salarioBrutoField = new JTextField();
+    salarioBrutoField.setText("Salario bruto textfield");
     diasTrabajadosField = new JTextField();
 
 
@@ -167,6 +172,7 @@ public class MenuPrincipal extends JFrame {
 
     panelFormulario.add(new JLabel("Salario Bruto:"));
     panelFormulario.add(salarioBrutoField);
+  
 
     panelFormulario.add(new JLabel("Días Trabajados:"));
     panelFormulario.add(diasTrabajadosField);
