@@ -1,8 +1,7 @@
-package controladora;
+package Controladora;
 
-import modelo.Empleado;
-import modelo.Logic2;
-import vista.MenuPrincipal;
+import Modelo.*;
+import Vista.*;
 
 import java.awt.*;
 import javax.swing.*;
@@ -39,7 +38,7 @@ public class Controlador {
             int diasTrabajados = Integer.parseInt(menu.getDiasTrabajadosField().getText());
     
             // Crear el objeto Empleado con los datos del formulario
-            Empleado empleado = new Empleado(0, salarioMensual, 0, diasTrabajados, 0, false);
+            Empleado empleado = new Empleado(null, null, null, null, 0, salarioMensual, 0, diasTrabajados, 0, diasTrabajados, false);
     
             // Realizar el cálculo de vacaciones usando Logic2
             int diasVacaciones = Logic2.calcularDiasVacaciones(empleado);

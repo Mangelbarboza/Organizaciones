@@ -1,6 +1,6 @@
-package controladora;
+package Controladora;
 
-import vista.MenuPrincipal;
+import Vista.MenuPrincipal;
 
 @SuppressWarnings("unused")   // Esto es para quitar las advertencias de que no se usa una clase
 

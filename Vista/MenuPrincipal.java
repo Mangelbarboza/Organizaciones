@@ -1,7 +1,10 @@
-package vista;
+package Vista;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+
+import Modelo.Empleado;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,14 +13,12 @@ public class MenuPrincipal extends JFrame {
     private CardLayout cardLayout;
     public JButton botonSalarioNeto, botonVacaciones, botonAguinaldo, botonSalir;
     public JButton botonRegresarSalario, botonRegresarVacaciones, botonRegresarAguinaldo;
-    public JButton botonTerminarContinuar;
     public JPanel panelMenu, panelSalarioNeto, panelVacaciones, panelAguinaldo, panelFormulario;
     
-    // Campos de texto del formulario
-    private JTextField nombreField, cedulaField, puestoField, fechaIngresoField;
-    private JTextField salarioBrutoField, tipoContratoField, deduccionesField;
-    private JTextField diasTrabajadosField, vacacionesTomadasField, fechaInicioVacacionesField, fechaFinVacacionesField;
-    private JTextField fechaDespidoField, causaDespidoField, aguinaldoPendienteField, diasNoRemuneradosField;
+    // Campos de texto del formulario simplificado
+     private JTextField nombreField, cedulaField, puestoField, fechaIngresoField;
+     private JTextField salarioBrutoField, diasTrabajadosField;
+     private JButton botonTerminarContinuar;
 
     //Nai pero aun tengo duda
     private JTextField salarioMensualField;
@@ -152,61 +153,76 @@ public class MenuPrincipal extends JFrame {
         panelAguinaldo.add(botonRegresarAguinaldo, BorderLayout.SOUTH);
     }
 
-    private void initFormularioPanel() {
-        panelFormulario = new JPanel(new GridLayout(15, 2, 10, 10));
-        panelFormulario.setBackground(new Color(255, 255, 255));
-        panelFormulario.setBorder(createRoundedBorder());
+    private void initFormularioPanel() {//Nai
+        panelFormulario = new JPanel(new GridLayout(8, 2, 10, 10)); // Cambiamos el tamaño de la cuadrícula para menos campos
+    panelFormulario.setBackground(new Color(255, 255, 255));
+    panelFormulario.setBorder(createRoundedBorder());
 
-        nombreField = new JTextField();
-        cedulaField = new JTextField();
-        puestoField = new JTextField();
-        fechaIngresoField = new JTextField();
-        salarioBrutoField = new JTextField();
-        tipoContratoField = new JTextField();
-        deduccionesField = new JTextField();
-        diasTrabajadosField = new JTextField();
-        vacacionesTomadasField = new JTextField();
-        fechaInicioVacacionesField = new JTextField();
-        fechaFinVacacionesField = new JTextField();
-        fechaDespidoField = new JTextField();
-        causaDespidoField = new JTextField();
-        aguinaldoPendienteField = new JTextField();
-        diasNoRemuneradosField = new JTextField();
+        // Campos de texto esenciales
+    nombreField = new JTextField();
+    cedulaField = new JTextField();
+    puestoField = new JTextField();
+    fechaIngresoField = new JTextField();
+    salarioBrutoField = new JTextField();
+    diasTrabajadosField = new JTextField();
 
-        panelFormulario.add(new JLabel("Nombre Completo:"));
-        panelFormulario.add(nombreField);
-        panelFormulario.add(new JLabel("Cédula:"));
-        panelFormulario.add(cedulaField);
-        panelFormulario.add(new JLabel("Puesto:"));
-        panelFormulario.add(puestoField);
-        panelFormulario.add(new JLabel("Fecha de Ingreso:"));
-        panelFormulario.add(fechaIngresoField);
-        panelFormulario.add(new JLabel("Salario Bruto:"));
-        panelFormulario.add(salarioBrutoField);
-        panelFormulario.add(new JLabel("Tipo de Contrato:"));
-        panelFormulario.add(tipoContratoField);
-        panelFormulario.add(new JLabel("Deducciones:"));
-        panelFormulario.add(deduccionesField);
-        panelFormulario.add(new JLabel("Días Trabajados:"));
-        panelFormulario.add(diasTrabajadosField);
-        panelFormulario.add(new JLabel("Vacaciones Tomadas:"));
-        panelFormulario.add(vacacionesTomadasField);
-        panelFormulario.add(new JLabel("Fecha Inicio Vacaciones:"));
-        panelFormulario.add(fechaInicioVacacionesField);
-        panelFormulario.add(new JLabel("Fecha Fin Vacaciones:"));
-        panelFormulario.add(fechaFinVacacionesField);
-        panelFormulario.add(new JLabel("Fecha de Despido:"));
-        panelFormulario.add(fechaDespidoField);
-        panelFormulario.add(new JLabel("Causa del Despido:"));
-        panelFormulario.add(causaDespidoField);
-        panelFormulario.add(new JLabel("Aguinaldo Pendiente:"));
-        panelFormulario.add(aguinaldoPendienteField);
-        panelFormulario.add(new JLabel("Días No Remunerados:"));
-        panelFormulario.add(diasNoRemuneradosField);
 
-        botonTerminarContinuar = crearBoton("Terminar y Continuar");
-        panelFormulario.add(botonTerminarContinuar);
+    // Añadimos solo los campos esenciales al panel
+    panelFormulario.add(new JLabel("Nombre Completo:"));
+    panelFormulario.add(nombreField);
+
+    panelFormulario.add(new JLabel("Cédula:"));
+    panelFormulario.add(cedulaField);
+
+    panelFormulario.add(new JLabel("Puesto:"));
+    panelFormulario.add(puestoField);
+
+    panelFormulario.add(new JLabel("Fecha de Ingreso (YYYY-MM-DD):"));
+    panelFormulario.add(fechaIngresoField);
+
+    panelFormulario.add(new JLabel("Salario Bruto:"));
+    panelFormulario.add(salarioBrutoField);
+
+    panelFormulario.add(new JLabel("Días Trabajados:"));
+    panelFormulario.add(diasTrabajadosField);
+
+       // Botón para continuar y guardar los datos
+    botonTerminarContinuar = crearBoton("Guardar y Continuar");
+    panelFormulario.add(botonTerminarContinuar);
+
+    // Acción del botón "Guardar y Continuar"
+    botonTerminarContinuar.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            guardarDatosEmpleado();
+            cardLayout.show(getContentPane(), "menu"); // Muestra el menú principal después de guardar
+        }
+    });
+    add(panelFormulario, "formulario"); // Añadir el panel de formulario al CardLayout con la etiqueta "formulario"
     }
+    //Lo hice yo nAI
+    private void guardarDatosEmpleado() {
+    try {
+        // Obtener los datos de los campos de entrada
+        String nombre = nombreField.getText();
+        String cedula = cedulaField.getText();
+        String puesto = puestoField.getText();
+        String fechaIngreso = fechaIngresoField.getText();
+        double salarioBruto = Double.parseDouble(salarioBrutoField.getText());
+        int diasTrabajados = Integer.parseInt(diasTrabajadosField.getText());
+
+        // Crear instancia de Empleado con los datos ingresados
+        Empleado empleado = new Empleado(nombre, cedula, puesto, fechaIngreso, 
+                                         0, 0, salarioBruto, 0, diasTrabajados, 0, false);
+
+        JOptionPane.showMessageDialog(this, "Datos del empleado guardados correctamente.");
+        
+        // Ahora puedes almacenar este empleado o pasarlo a la controladora para otros cálculos
+
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(this, "Por favor, ingrese valores numéricos válidos.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
 
     private JButton crearBoton(String texto) {
         JButton boton = new JButton(texto);

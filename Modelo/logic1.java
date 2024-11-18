@@ -1,5 +1,5 @@
-package modelo;
-import vista.MenuPrincipal;
+package Modelo;
+import Vista.MenuPrincipal;
 public class logic1 {   // Logic 
 
     MenuPrincipal UI;
