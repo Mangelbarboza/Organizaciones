@@ -146,19 +146,19 @@ public class MenuPrincipal extends JFrame {
 
         // Campos de texto esenciales
     nombreField = new JTextField();
-    nombreField.setText("Nombre text fields");
+    nombreField.setText("Angel Hernandez Corea");
 
     cedulaField = new JTextField();
-    cedulaField.setText("Cedula text fields");
+    cedulaField.setText("702970336");
 
     puestoField = new JTextField();
-    puestoField.setText("Pues Text Field");
+    puestoField.setText("Desarrolladores");
 
     salarioBrutoField = new JTextField();
-    salarioBrutoField.setText("Salario bruto textfield");
+    salarioBrutoField.setText("1500000");
 
     diasTrabajadosField = new JTextField();
-    diasTrabajadosField.setText("DiasTrabajdos TextnFields");
+    diasTrabajadosField.setText("286");
 
     // Añadimos solo los campos esenciales al panel
     panelFormulario.add(new JLabel("Nombre Completo:"));
