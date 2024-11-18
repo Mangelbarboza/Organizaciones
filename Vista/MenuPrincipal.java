@@ -16,7 +16,7 @@ public class MenuPrincipal extends JFrame {
     public JPanel panelMenu, panelSalarioNeto, panelVacaciones, panelAguinaldo, panelFormulario;
     
     // Campos de texto del formulario simplificado
-     private JTextField nombreField, cedulaField, puestoField, fechaIngresoField;
+     private JTextField nombreField, cedulaField, puestoField;
      private JTextField salarioBrutoField, diasTrabajadosField;
      private JButton botonTerminarContinuar;
 
@@ -162,7 +162,6 @@ public class MenuPrincipal extends JFrame {
     nombreField = new JTextField();
     cedulaField = new JTextField();
     puestoField = new JTextField();
-    fechaIngresoField = new JTextField();
     salarioBrutoField = new JTextField();
     diasTrabajadosField = new JTextField();
 
@@ -177,9 +176,6 @@ public class MenuPrincipal extends JFrame {
     panelFormulario.add(new JLabel("Puesto:"));
     panelFormulario.add(puestoField);
 
-    panelFormulario.add(new JLabel("Fecha de Ingreso (YYYY-MM-DD):"));
-    panelFormulario.add(fechaIngresoField);
-
     panelFormulario.add(new JLabel("Salario Bruto:"));
     panelFormulario.add(salarioBrutoField);
 
@@ -191,38 +187,8 @@ public class MenuPrincipal extends JFrame {
     panelFormulario.add(botonTerminarContinuar);
 
     // Acción del botón "Guardar y Continuar"
-    botonTerminarContinuar.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            guardarDatosEmpleado();
-            cardLayout.show(getContentPane(), "menu"); // Muestra el menú principal después de guardar
-        }
-    });
-    add(panelFormulario, "formulario"); // Añadir el panel de formulario al CardLayout con la etiqueta "formulario"
+    
     }
-    //Lo hice yo nAI
-    private void guardarDatosEmpleado() {
-    try {
-        // Obtener los datos de los campos de entrada
-        String nombre = nombreField.getText();
-        String cedula = cedulaField.getText();
-        String puesto = puestoField.getText();
-        String fechaIngreso = fechaIngresoField.getText();
-        double salarioBruto = Double.parseDouble(salarioBrutoField.getText());
-        int diasTrabajados = Integer.parseInt(diasTrabajadosField.getText());
-
-        // Crear instancia de Empleado con los datos ingresados
-        Empleado empleado = new Empleado(nombre, cedula, puesto, fechaIngreso, 
-                                         0, 0, salarioBruto, 0, diasTrabajados, 0, false);
-
-        JOptionPane.showMessageDialog(this, "Datos del empleado guardados correctamente.");
-        
-        // Ahora puedes almacenar este empleado o pasarlo a la controladora para otros cálculos
-
-    } catch (NumberFormatException ex) {
-        JOptionPane.showMessageDialog(this, "Por favor, ingrese valores numéricos válidos.", "Error", JOptionPane.ERROR_MESSAGE);
-    }
-}
 
     private JButton crearBoton(String texto) {
         JButton boton = new JButton(texto);
@@ -264,5 +230,9 @@ public class MenuPrincipal extends JFrame {
     public JLabel getResultadoPagoLabel() {
         return resultadoPagoLabel;
     }
-    
+
+public JTextField getNombreField() { return nombreField; }
+public JTextField getCedulaField() { return cedulaField; }
+public JTextField getPuestoField() { return puestoField; }
+public JTextField getSalarioBrutoField() { return salarioBrutoField; }
 }

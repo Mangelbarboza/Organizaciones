@@ -31,7 +31,10 @@ public class Controlador {
         // Acción del botón de calcular vacaciones
         menu.botonCalcularVacaciones.addActionListener(e -> calcularVacaciones());
 
+         // Boton para guardar empleado
+         menu.getBotonTerminarContinuar().addActionListener(e -> guardarDatosEmpleado());
     }
+
     private void calcularVacaciones() {//Nai
         try {
             double salarioMensual = Double.parseDouble(menu.getSalarioMensualField().getText());
@@ -48,6 +51,26 @@ public class Controlador {
             menu.getResultadoDiasLabel().setText("Días de Vacaciones: " + diasVacaciones);
             menu.getResultadoPagoLabel().setText("Pago de Vacaciones: " + pagoVacaciones);
     
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(menu, "Por favor, ingrese valores numéricos válidos.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    private void guardarDatosEmpleado() {
+        try {
+            // Obtener los datos de los campos de entrada desde MenuPrincipal
+            String nombre = menu.getNombreField().getText();
+            String cedula = menu.getCedulaField().getText();
+            String puesto = menu.getPuestoField().getText();
+            double salarioBruto = Double.parseDouble(menu.getSalarioBrutoField().getText());
+            int diasTrabajados = Integer.parseInt(menu.getDiasTrabajadosField().getText());
+
+            // Crear instancia de Empleado con los datos ingresados
+            Empleado empleado = new Empleado(nombre, cedula, puesto, puesto, diasTrabajados, diasTrabajados, salarioBruto, diasTrabajados, diasTrabajados, diasTrabajados, false);
+
+            JOptionPane.showMessageDialog(menu, "Datos del empleado guardados correctamente.");
+
+            // Ahora puedes almacenar el objeto `empleado` para otros cálculos o usarlo en la aplicación
+
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(menu, "Por favor, ingrese valores numéricos válidos.", "Error", JOptionPane.ERROR_MESSAGE);
         }
