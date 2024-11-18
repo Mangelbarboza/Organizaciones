@@ -8,7 +8,7 @@ public class Main {
 
    
 
-    public static void main(String[] args) {
+    public static <Controlador> void main(String[] args) {
     
         // Iniciar interfaz
         MenuPrincipal menu = new MenuPrincipal();
