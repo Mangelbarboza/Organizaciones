@@ -41,7 +41,7 @@ public class Controlador {
             int diasTrabajados = Integer.parseInt(menu.getDiasTrabajadosField().getText());
     
             // Crear el objeto Empleado con los datos del formulario
-            Empleado empleado = new Empleado(null, null, null, null, 0, salarioMensual, 0, diasTrabajados, 0, diasTrabajados, false);
+            Empleado empleado = new Empleado(null, null, null, 0, salarioMensual, 0, diasTrabajados, 0, diasTrabajados, diasTrabajados, false);
     
             // Realizar el cálculo de vacaciones usando Logic2
             int diasVacaciones = Logic2.calcularDiasVacaciones(empleado);
@@ -65,7 +65,7 @@ public class Controlador {
             int diasTrabajados = Integer.parseInt(menu.getDiasTrabajadosField().getText());
 
             // Crear instancia de Empleado con los datos ingresados
-            Empleado empleado = new Empleado(nombre, cedula, puesto, null, 0, salarioBruto, salarioBruto, diasTrabajados, 0, 0, false);
+            Empleado empleado = new Empleado(nombre, cedula, puesto, 0, salarioBruto, salarioBruto, diasTrabajados, 0, 0, diasTrabajados, false);
 
 
 

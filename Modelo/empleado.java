@@ -1,6 +1,6 @@
 package Modelo;
 
-public class empleado {
+public class Empleado {
     // Información personal
     private String nombre;
     private String cedula;
@@ -17,8 +17,8 @@ public class empleado {
     private boolean aplicaRenta;
 
     // Constructor
-    public empleado(String nombre, String cedula, String puesto, 
-                    double salarioDiario, double salarioMensual, double salarioBruto, 
+    public Empleado(String nombre, String cedula, String puesto, 
+                    Object object, double salarioDiario, double salarioMensual, double salarioBruto, 
                     int aniosTrabajados, int diasTrabajados, double horasExtras, boolean aplicaRenta) {
         this.nombre = nombre;
         this.cedula = cedula;
