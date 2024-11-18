@@ -1,17 +1,17 @@
-package Controladora;
+package controladora;
 
-import Vista.MenuPrincipal;
-import Modelo.Empleado;
-import Modelo.Logic2;
+import modelo.Empleado;
+import modelo.Logic2;
+import vista.MenuPrincipal;
 
-import javax.swing.*;
 import java.awt.*;
+import javax.swing.*;
 
-public class controladora {
+public class Controlador {
 
     private MenuPrincipal menu;
 
-    public controladora(MenuPrincipal menu) {
+    public Controlador(MenuPrincipal menu) {
         this.menu = menu;
         initController();
     }

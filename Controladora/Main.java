@@ -1,7 +1,6 @@
-package Controladora;
+package controladora;
 
-import Vista.MenuPrincipal;
-import Controladora.controladora;
+import vista.MenuPrincipal;
 
 @SuppressWarnings("unused")   // Esto es para quitar las advertencias de que no se usa una clase
 
@@ -16,8 +15,7 @@ public class Main {
         menu.setVisible(true);
         
         // Crear controladora
-      
-        controladora controller = new controladora(menu);
+      Controlador controller = new Controlador(menu);
        
     }
 
