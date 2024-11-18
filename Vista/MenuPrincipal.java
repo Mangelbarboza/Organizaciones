@@ -2,7 +2,6 @@ package Vista;
 
 import javax.swing.*;
 import javax.swing.border.Border;
-
 import java.awt.*;
 
 public class MenuPrincipal extends JFrame {
@@ -10,17 +9,15 @@ public class MenuPrincipal extends JFrame {
     public JButton botonSalarioNeto, botonVacaciones, botonAguinaldo, botonSalir;
     public JButton botonRegresarSalario, botonRegresarVacaciones, botonRegresarAguinaldo;
     public JPanel panelMenu, panelSalarioNeto, panelVacaciones, panelAguinaldo, panelFormulario;
-    
-    // Campos de texto del formulario simplificado
-     private JTextField nombreField, cedulaField, puestoField;
-     private JTextField salarioBrutoField, diasTrabajadosField;
-     private JButton botonTerminarContinuar;
 
-    //Nai pero aun tengo duda
+    // Campos de texto del formulario simplificado
+    private JTextField nombreField, cedulaField, puestoField;
+    private JTextField salarioBrutoField, diasTrabajadosField;
+    private JButton botonTerminarContinuar;
+
     private JTextField salarioMensualField;
     private JLabel resultadoDiasLabel, resultadoPagoLabel;
     public JButton botonCalcularVacaciones;
-
 
     public MenuPrincipal() {
         setTitle("Sistema de Cálculo Laboral");
@@ -28,45 +25,37 @@ public class MenuPrincipal extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        // Usar CardLayout para cambiar entre paneles
         cardLayout = new CardLayout();
         setLayout(cardLayout);
 
-        // Inicializar paneles y estilo general
-        initFormularioPanel(); // Mostrar el formulario primero
+        initFormularioPanel(); 
         initMenuPanel();
         initSalarioPanel();
         initVacacionesPanel();
         initAguinaldoPanel();
 
-        // Añadir paneles al CardLayout
-        add(panelFormulario, "formulario"); // Formulario inicial
-        add(panelMenu, "menu"); // Menú principal
+        add(panelFormulario, "formulario");
+        add(panelMenu, "menu");
         add(panelSalarioNeto, "salarioNeto");
         add(panelVacaciones, "vacaciones");
         add(panelAguinaldo, "aguinaldo");
 
-        getContentPane().setBackground(new Color(240, 240, 240));
-
+        getContentPane().setBackground(new Color(240, 240, 240));  // Fondo pastel claro
     }
 
     private void initMenuPanel() {
         panelMenu = new JPanel(new GridBagLayout());
-        panelMenu.setBackground(new Color(255, 255, 255));
-        panelMenu.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        panelMenu.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(new Color(220, 220, 220), 1),
-                BorderFactory.createEmptyBorder(20, 20, 20, 20)
-        ));
+        panelMenu.setBackground(new Color(235, 245, 255)); // Fondo pastel claro
+        panelMenu.setBorder(createRoundedBorder());
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.insets = new Insets(10, 10, 10, 10);
 
-        botonSalarioNeto = crearBoton("Calcular Salario Neto");
-        botonVacaciones = crearBoton("Calcular Vacaciones");
-        botonAguinaldo = crearBoton("Calcular Aguinaldo");
-        botonSalir = crearBoton("Salir");
+        botonSalarioNeto = new RoundedButton("Calcular Salario Neto");
+        botonVacaciones = new RoundedButton("Calcular Vacaciones");
+        botonAguinaldo = new RoundedButton("Calcular Aguinaldo");
+        botonSalir = new RoundedButton("Salir");
 
         gbc.gridy = 0;
         panelMenu.add(botonSalarioNeto, gbc);
@@ -80,154 +69,246 @@ public class MenuPrincipal extends JFrame {
 
     private void initSalarioPanel() {
         panelSalarioNeto = new JPanel(new BorderLayout());
-        panelSalarioNeto.setBackground(new Color(255, 255, 255));
+        panelSalarioNeto.setBackground(new Color(235, 245, 255)); // Fondo pastel claro
         panelSalarioNeto.setBorder(createRoundedBorder());
 
-        JLabel label = new JLabel("Cálculo de Salario Neto", SwingConstants.CENTER);
-        label.setFont(new Font("SansSerif", Font.BOLD, 18));
-        label.setForeground(new Color(50, 50, 50));
-        panelSalarioNeto.add(label, BorderLayout.CENTER);
+        // Panel superior para ingreso de datos
+        JPanel dataInputPanel = new JPanel();
+        dataInputPanel.setLayout(new GridLayout(2, 2, 10, 10));
+        dataInputPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
+        dataInputPanel.setBackground(new Color(235, 245, 255));
 
-        botonRegresarSalario = crearBoton("Volver al Menú");
+        JLabel labelSalarioBruto = new JLabel("Salario Bruto:");
+        JTextField fieldSalarioBruto = new RoundedTextField("");
+        JLabel labelDiasTrabajados = new JLabel("Días Trabajados:");
+        JTextField fieldDiasTrabajados = new RoundedTextField("");
+
+        dataInputPanel.add(labelSalarioBruto);
+        dataInputPanel.add(fieldSalarioBruto);
+        dataInputPanel.add(labelDiasTrabajados);
+        dataInputPanel.add(fieldDiasTrabajados);
+
+        panelSalarioNeto.add(dataInputPanel, BorderLayout.NORTH);
+
+        // Panel inferior para calculadora
+        JPanel calculatorPanel = new JPanel(new GridLayout(4, 3, 10, 10));
+        calculatorPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
+        calculatorPanel.setBackground(new Color(235, 245, 255));
+
+        String[] buttons = {
+            "7", "8", "9",
+            "4", "5", "6",
+            "1", "2", "3",
+            "0", ".", "="
+        };
+
+        for (String text : buttons) {
+            JButton button = new CircularButton(text);
+            calculatorPanel.add(button);
+        }
+
+        panelSalarioNeto.add(calculatorPanel, BorderLayout.CENTER);
+
+        botonRegresarSalario = new RoundedButton("Volver al Menú");
         panelSalarioNeto.add(botonRegresarSalario, BorderLayout.SOUTH);
     }
 
     private void initVacacionesPanel() {
-         panelVacaciones = new JPanel();
-         panelVacaciones.setLayout(new BoxLayout(panelVacaciones, BoxLayout.Y_AXIS));
-         panelVacaciones.setBackground(new Color(255, 255, 255));
-         panelVacaciones.setBorder(createRoundedBorder());
+        panelVacaciones = new JPanel();
+        panelVacaciones.setLayout(new BoxLayout(panelVacaciones, BoxLayout.Y_AXIS));
+        panelVacaciones.setBackground(new Color(235, 245, 255)); // Fondo pastel claro
+        panelVacaciones.setBorder(createRoundedBorder());
 
-         JLabel label = new JLabel("Cálculo de Vacaciones", SwingConstants.CENTER);
-         label.setFont(new Font("SansSerif", Font.BOLD, 18));
-         label.setForeground(new Color(50, 50, 50));
-         panelVacaciones.add(label);
+        JLabel label = new JLabel("Cálculo de Vacaciones", SwingConstants.CENTER);
+        label.setFont(new Font("Segoe UI", Font.BOLD, 18));
+        label.setForeground(new Color(70, 70, 70));
+        panelVacaciones.add(label);
 
-          // Campo de entrada para salario mensual
-         salarioMensualField = new JTextField();
-         salarioMensualField.setText("Salario mensual");
-         panelVacaciones.add(new JLabel("Salario Mensual:"));
-         panelVacaciones.add(salarioMensualField);
+        salarioMensualField = new RoundedTextField("Salario mensual");
+        panelVacaciones.add(new JLabel("Salario Mensual:"));
+        panelVacaciones.add(salarioMensualField);
 
+        botonCalcularVacaciones = new RoundedButton("Calcular Vacaciones");
+        panelVacaciones.add(botonCalcularVacaciones);
 
-         // Botón para calcular vacaciones
-         botonCalcularVacaciones = crearBoton("Calcular Vacaciones");
-         panelVacaciones.add(botonCalcularVacaciones);
+        resultadoDiasLabel = new JLabel("Días de Vacaciones: ");
+        resultadoPagoLabel = new JLabel("Pago de Vacaciones: ");
+        panelVacaciones.add(resultadoDiasLabel);
+        panelVacaciones.add(resultadoPagoLabel);
 
-         // Etiquetas para mostrar resultados
-         resultadoDiasLabel = new JLabel("Días de Vacaciones: ");
-         resultadoPagoLabel = new JLabel("Pago de Vacaciones: ");
-         panelVacaciones.add(resultadoDiasLabel);
-         panelVacaciones.add(resultadoPagoLabel);
-
-         //Boton para regresar al menu pue
-         botonRegresarVacaciones = crearBoton("Volver al Menú");
-         panelVacaciones.add(botonRegresarVacaciones, BorderLayout.SOUTH);
+        botonRegresarVacaciones = new RoundedButton("Volver al Menú");
+        panelVacaciones.add(botonRegresarVacaciones, BorderLayout.SOUTH);
     }
 
     private void initAguinaldoPanel() {
         panelAguinaldo = new JPanel(new BorderLayout());
-        panelAguinaldo.setBackground(new Color(255, 255, 255));
+        panelAguinaldo.setBackground(new Color(235, 245, 255)); // Fondo pastel claro
         panelAguinaldo.setBorder(createRoundedBorder());
 
         JLabel label = new JLabel("Cálculo de Aguinaldo", SwingConstants.CENTER);
-        label.setFont(new Font("SansSerif", Font.BOLD, 18));
-        label.setForeground(new Color(50, 50, 50));
+        label.setFont(new Font("Segoe UI", Font.BOLD, 18));
+        label.setForeground(new Color(70, 70, 70));
         panelAguinaldo.add(label, BorderLayout.CENTER);
 
-        botonRegresarAguinaldo = crearBoton("Volver al Menú");
+        botonRegresarAguinaldo = new RoundedButton("Volver al Menú");
         panelAguinaldo.add(botonRegresarAguinaldo, BorderLayout.SOUTH);
     }
 
-    private void initFormularioPanel() {//Nai
-        panelFormulario = new JPanel(new GridLayout(8, 2, 10, 10)); // Cambiamos el tamaño de la cuadrícula para menos campos
-    panelFormulario.setBackground(new Color(255, 255, 255));
-    panelFormulario.setBorder(createRoundedBorder());
+    private void initFormularioPanel() {
+        panelFormulario = new JPanel(new GridBagLayout());
+        panelFormulario.setBackground(new Color(235, 245, 255)); // Fondo pastel claro
+        panelFormulario.setBorder(createRoundedBorder());
 
-        // Campos de texto esenciales
-    nombreField = new JTextField();
-    nombreField.setText("Angel Hernandez Corea");
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.insets = new Insets(5, 5, 5, 5);
 
-    cedulaField = new JTextField();
-    cedulaField.setText("702970336");
+        nombreField = new RoundedTextField("Angel Hernandez Corea");
+        cedulaField = new RoundedTextField("702970336");
+        puestoField = new RoundedTextField("Desarrollador");
+        salarioBrutoField = new RoundedTextField("1500000");
+        diasTrabajadosField = new RoundedTextField("286");
 
-    puestoField = new JTextField();
-    puestoField.setText("Desarrolladores");
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        panelFormulario.add(new JLabel("Nombre Completo:"), gbc);
+        gbc.gridx = 1;
+        panelFormulario.add(nombreField, gbc);
 
-    salarioBrutoField = new JTextField();
-    salarioBrutoField.setText("1500000");
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        panelFormulario.add(new JLabel("Cédula:"), gbc);
+        gbc.gridx = 1;
+        panelFormulario.add(cedulaField, gbc);
 
-    diasTrabajadosField = new JTextField();
-    diasTrabajadosField.setText("286");
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        panelFormulario.add(new JLabel("Puesto:"), gbc);
+        gbc.gridx = 1;
+        panelFormulario.add(puestoField, gbc);
 
-    // Añadimos solo los campos esenciales al panel
-    panelFormulario.add(new JLabel("Nombre Completo:"));
-    panelFormulario.add(nombreField);
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        panelFormulario.add(new JLabel("Salario Bruto:"), gbc);
+        gbc.gridx = 1;
+        panelFormulario.add(salarioBrutoField, gbc);
 
-    panelFormulario.add(new JLabel("Cédula:"));
-    panelFormulario.add(cedulaField);
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        panelFormulario.add(new JLabel("Días Trabajados:"), gbc);
+        gbc.gridx = 1;
+        panelFormulario.add(diasTrabajadosField, gbc);
 
-    panelFormulario.add(new JLabel("Puesto:"));
-    panelFormulario.add(puestoField);
-
-    panelFormulario.add(new JLabel("Salario Bruto:"));
-    panelFormulario.add(salarioBrutoField);
-  
-
-    panelFormulario.add(new JLabel("Días Trabajados:"));
-    panelFormulario.add(diasTrabajadosField);
-
-       // Botón para continuar y guardar los datos
-    botonTerminarContinuar = crearBoton("Guardar y Continuar");
-    panelFormulario.add(botonTerminarContinuar);
-
-    // Acción del botón "Guardar y Continuar"
-    
-    }
-
-    private JButton crearBoton(String texto) {
-        JButton boton = new JButton(texto);
-        boton.setFocusPainted(false);
-        boton.setBackground(new Color(75, 85, 99));
-        boton.setForeground(Color.WHITE);
-        boton.setFont(new Font("SansSerif", Font.PLAIN, 16));
-        boton.setBorder(BorderFactory.createEmptyBorder(15, 10, 15, 10));
-        boton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        boton.setOpaque(true);
-        boton.setBorder(BorderFactory.createLineBorder(new Color(220, 220, 220), 1));
-        return boton;
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        gbc.gridwidth = 2;
+        gbc.anchor = GridBagConstraints.CENTER;
+        botonTerminarContinuar = new RoundedButton("Guardar y Continuar");
+        panelFormulario.add(botonTerminarContinuar, gbc);
     }
 
     private Border createRoundedBorder() {
         return BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(new Color(220, 220, 220), 1),
+                BorderFactory.createLineBorder(new Color(180, 180, 180), 1),
                 BorderFactory.createEmptyBorder(15, 15, 15, 15)
         );
     }
 
-    public JButton getBotonTerminarContinuar() {
-        return botonTerminarContinuar;
+    // Clase personalizada para JTextField con bordes redondeados
+    private class RoundedTextField extends JTextField {
+        public RoundedTextField(String placeholder) {
+            super(placeholder);
+            setFont(new Font("Segoe UI", Font.PLAIN, 14));
+            setOpaque(false);
+            setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            if (g instanceof Graphics2D) {
+                Graphics2D g2 = (Graphics2D) g;
+                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+                g2.setColor(getBackground());
+                g2.fillRoundRect(0, 0, getWidth(), getHeight(), 15, 15); // Bordes redondeados
+            }
+            super.paintComponent(g);
+        }
+
+        @Override
+        public void setBackground(Color bg) {
+            super.setBackground(bg);
+        }
     }
 
-    //Gett y Set publicos Nai
-    public JTextField getSalarioMensualField() {
-        return salarioMensualField;
-    }
-    
-    public JTextField getDiasTrabajadosField() {
-        return diasTrabajadosField;
-    }
-    
-    public JLabel getResultadoDiasLabel() {
-        return resultadoDiasLabel;
-    }
-    
-    public JLabel getResultadoPagoLabel() {
-        return resultadoPagoLabel;
+    // Clase personalizada para JButton con bordes redondeados
+    private class RoundedButton extends JButton {
+        public RoundedButton(String text) {
+            super(text);
+            setFocusPainted(false);
+            setFont(new Font("Segoe UI", Font.PLAIN, 16));
+            setBackground(new Color(150, 200, 230)); // Color pastel
+            setForeground(Color.DARK_GRAY);
+            setOpaque(false);
+            setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            if (g instanceof Graphics2D) {
+                Graphics2D g2 = (Graphics2D) g;
+                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+                g2.setColor(getBackground());
+                g2.fillRoundRect(0, 0, getWidth(), getHeight(), 20, 20); // Bordes redondeados
+            }
+            super.paintComponent(g);
+        }
     }
 
-public JTextField getNombreField() { return nombreField; }
-public JTextField getCedulaField() { return cedulaField; }
-public JTextField getPuestoField() { return puestoField; }
-public JTextField getSalarioBrutoField() { return salarioBrutoField; }
+    // Clase personalizada para JButton circular
+    private class CircularButton extends JButton {
+        public CircularButton(String text) {
+            super(text);
+            setFocusPainted(false);
+            setFont(new Font("Segoe UI", Font.PLAIN, 16));
+            setBackground(new Color(150, 200, 230)); // Color pastel
+            setForeground(Color.DARK_GRAY);
+            setOpaque(false);
+            setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            if (g instanceof Graphics2D) {
+                Graphics2D g2 = (Graphics2D) g;
+                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+                g2.setColor(getBackground());
+                g2.fillOval(0, 0, getWidth(), getHeight()); // Botón circular
+            }
+            super.paintComponent(g);
+        }
+
+        @Override
+        public Dimension getPreferredSize() {
+            return new Dimension(50, 50); // Tamaño circular
+        }
+    }
+
+    // Getters y Setters
+    public JButton getBotonTerminarContinuar() { return botonTerminarContinuar; }
+    public JTextField getSalarioMensualField() { return salarioMensualField; }
+    public JTextField getDiasTrabajadosField() { return diasTrabajadosField; }
+    public JLabel getResultadoDiasLabel() { return resultadoDiasLabel; }
+    public JLabel getResultadoPagoLabel() { return resultadoPagoLabel; }
+    public JTextField getNombreField() { return nombreField; }
+    public JTextField getCedulaField() { return cedulaField; }
+    public JTextField getPuestoField() { return puestoField; }
+    public JTextField getSalarioBrutoField() { return salarioBrutoField; }
+    public JButton getBotonCalcularVacaciones() { return botonCalcularVacaciones; }
+    public JButton getBotonSalarioNeto() { return botonSalarioNeto; }
+    public JButton getBotonVacaciones() { return botonVacaciones; }
+    public JButton getBotonAguinaldo() { return botonAguinaldo; }
+    public JButton getBotonSalir() { return botonSalir; }
+    public JButton getBotonRegresarSalario() { return botonRegresarSalario; }
+    public JButton getBotonRegresarVacaciones() { return botonRegresarVacaciones; }
+    public JButton getBotonRegresarAguinaldo() { return botonRegresarAguinaldo; }
 }
