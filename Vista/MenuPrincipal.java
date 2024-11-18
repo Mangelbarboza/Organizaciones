@@ -31,7 +31,7 @@ public class MenuPrincipal extends JFrame {
         initFormularioPanel(); 
         initMenuPanel();
         initSalarioPanel();
-        initVacacionesPanel();
+        initVacacionesPanel(); // Conservamos el diseño original
         initAguinaldoPanel();
 
         add(panelFormulario, "formulario");
@@ -124,7 +124,11 @@ public class MenuPrincipal extends JFrame {
         label.setForeground(new Color(70, 70, 70));
         panelVacaciones.add(label);
 
-        botonCalcularVacaciones = new RoundedButton("Calcular Vacaciones");
+        salarioMensualField = new RoundedTextField("Salario mensual");
+        panelVacaciones.add(new JLabel("Salario Mensual:"));
+        panelVacaciones.add(salarioMensualField);
+
+        botonCalcularVacaciones = new RoundedButton("Calcular Vacaciones"); // Conservamos este botón y su funcionalidad
         panelVacaciones.add(botonCalcularVacaciones);
 
         resultadoDiasLabel = new JLabel("Días de Vacaciones: ");
