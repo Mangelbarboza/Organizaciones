@@ -189,13 +189,13 @@ private void initAguinaldoPanel() {
     panelAguinaldo.setBackground(new Color(235, 245, 255)); // Fondo pastel claro
     panelAguinaldo.setBorder(createRoundedBorder());
 
-    // Panel superior para el título, con espaciado interno
+    // Panel superior para el título, con mayor espaciado para bajarlo un poco
     JPanel titlePanel = new JPanel();
     titlePanel.setBackground(new Color(235, 245, 255));
-    titlePanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0)); // Espacio alrededor del título
+    titlePanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 20, 0)); // Espacio alrededor del título para bajarlo más
 
     JLabel label = new JLabel("Cálculo de Aguinaldo", SwingConstants.CENTER);
-    label.setFont(new Font("Segoe UI", Font.BOLD, 18));
+    label.setFont(new Font("Segoe UI", Font.BOLD, 24)); // Tamaño de fuente grande
     label.setForeground(new Color(70, 70, 70));
     titlePanel.add(label);
 
@@ -207,43 +207,55 @@ private void initAguinaldoPanel() {
     dataInputPanel.setBackground(new Color(235, 245, 255));
     GridBagConstraints gbc = new GridBagConstraints();
     gbc.fill = GridBagConstraints.HORIZONTAL;
-    gbc.insets = new Insets(5, 5, 5, 5);
+    gbc.insets = new Insets(10, 5, 15, 5);  // Mayor separación entre las filas
+
+    // Configuración de fuente para etiquetas y campos
+    Font labelFont = new Font("Segoe UI", Font.BOLD, 16);  // Etiquetas en negrita
+    Font textFieldFont = new Font("Segoe UI", Font.PLAIN, 16);
 
     // Campo y etiqueta de Salario Mensual
     JLabel labelSalarioMensual = new JLabel("Salario Mensual:");
+    labelSalarioMensual.setFont(labelFont);
     gbc.gridx = 0;
     gbc.gridy = 0;
     gbc.anchor = GridBagConstraints.EAST;
     dataInputPanel.add(labelSalarioMensual, gbc);
 
     JTextField fieldSalarioMensual = new RoundedTextField("");
-    fieldSalarioMensual.setPreferredSize(new Dimension(120, 25)); // Tamaño más pequeño
+    fieldSalarioMensual.setPreferredSize(new Dimension(150, 30)); // Tamaño un poco más grande
+    fieldSalarioMensual.setFont(textFieldFont);
     gbc.gridx = 1;
     gbc.anchor = GridBagConstraints.WEST;
     dataInputPanel.add(fieldSalarioMensual, gbc);
 
     // Campo y etiqueta de Horas Extras Mensuales
     JLabel labelHorasExtrasMensuales = new JLabel("Horas Extras Mensuales:");
+    labelHorasExtrasMensuales.setFont(labelFont);
     gbc.gridx = 0;
     gbc.gridy = 1;
     gbc.anchor = GridBagConstraints.EAST;
+    gbc.insets = new Insets(15, 5, 15, 5);  // Aumenta espacio entre las filas
     dataInputPanel.add(labelHorasExtrasMensuales, gbc);
 
     JTextField fieldHorasExtrasMensuales = new RoundedTextField("");
-    fieldHorasExtrasMensuales.setPreferredSize(new Dimension(120, 25)); // Tamaño más pequeño
+    fieldHorasExtrasMensuales.setPreferredSize(new Dimension(150, 30)); // Tamaño un poco más grande
+    fieldHorasExtrasMensuales.setFont(textFieldFont);
     gbc.gridx = 1;
     gbc.anchor = GridBagConstraints.WEST;
     dataInputPanel.add(fieldHorasExtrasMensuales, gbc);
 
     // Campo y etiqueta de Días Trabajados
     JLabel labelDiasTrabajados = new JLabel("Días Trabajados en el Año:");
+    labelDiasTrabajados.setFont(labelFont);
     gbc.gridx = 0;
     gbc.gridy = 2;
     gbc.anchor = GridBagConstraints.EAST;
+    gbc.insets = new Insets(15, 5, 15, 5);  // Aumenta espacio entre las filas
     dataInputPanel.add(labelDiasTrabajados, gbc);
 
     JTextField fieldDiasTrabajados = new RoundedTextField("");
-    fieldDiasTrabajados.setPreferredSize(new Dimension(120, 25)); // Tamaño más pequeño
+    fieldDiasTrabajados.setPreferredSize(new Dimension(150, 30)); // Tamaño un poco más grande
+    fieldDiasTrabajados.setFont(textFieldFont);
     gbc.gridx = 1;
     gbc.anchor = GridBagConstraints.WEST;
     dataInputPanel.add(fieldDiasTrabajados, gbc);
@@ -254,18 +266,21 @@ private void initAguinaldoPanel() {
     gbc.gridy = 3;
     gbc.gridwidth = 2;
     gbc.anchor = GridBagConstraints.CENTER;
+    gbc.insets = new Insets(20, 5, 20, 5);  // Espacio extra antes y después del botón
     dataInputPanel.add(botonCalcular, gbc);
 
     // Etiqueta para mostrar el resultado del aguinaldo
     JLabel labelResultadoAguinaldo = new JLabel("Aguinaldo Calculado:");
+    labelResultadoAguinaldo.setFont(labelFont);
     gbc.gridx = 0;
     gbc.gridy = 4;
     gbc.gridwidth = 1;
     gbc.anchor = GridBagConstraints.EAST;
+    gbc.insets = new Insets(15, 5, 5, 5);  // Espacio adicional para separar del botón anterior
     dataInputPanel.add(labelResultadoAguinaldo, gbc);
 
     JLabel resultadoAguinaldo = new JLabel("₡0.00"); // Valor inicial para el resultado
-    resultadoAguinaldo.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+    resultadoAguinaldo.setFont(new Font("Segoe UI", Font.PLAIN, 18)); // Tamaño intermedio para el resultado
     resultadoAguinaldo.setForeground(new Color(60, 60, 60));
     gbc.gridx = 1;
     gbc.anchor = GridBagConstraints.WEST;
