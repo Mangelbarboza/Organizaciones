@@ -120,74 +120,169 @@ public class MenuPrincipal extends JFrame {
         botonRegresarSalario = new RoundedButton("Volver al Menú");
         panelSalarioNeto.add(botonRegresarSalario, BorderLayout.SOUTH);
     }
+private void initVacacionesPanel() {
+    panelVacaciones = new JPanel(new GridBagLayout());
+    panelVacaciones.setBackground(new Color(235, 245, 255)); // Fondo pastel claro
+    panelVacaciones.setBorder(createRoundedBorder());
 
-    private void initVacacionesPanel() {
-        panelVacaciones = new JPanel();
-        panelVacaciones.setLayout(new BoxLayout(panelVacaciones, BoxLayout.Y_AXIS));
-        panelVacaciones.setBackground(new Color(235, 245, 255)); // Fondo pastel claro
-        panelVacaciones.setBorder(createRoundedBorder());
+    // Título de la sección
+    JLabel label = new JLabel("Cálculo de Vacaciones", SwingConstants.CENTER);
+    label.setFont(new Font("Segoe UI", Font.BOLD, 18));
+    label.setForeground(new Color(70, 70, 70));
 
-        JLabel label = new JLabel("Cálculo de Vacaciones", SwingConstants.CENTER);
-        label.setFont(new Font("Segoe UI", Font.BOLD, 18));
-        label.setForeground(new Color(70, 70, 70));
-        panelVacaciones.add(label);
+    // Configuración de GridBagConstraints para organizar los componentes
+    GridBagConstraints gbc = new GridBagConstraints();
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.insets = new Insets(5, 5, 5, 5);  // Espaciado reducido
 
-        salarioMensualField = new RoundedTextField("Salario mensual");
-        panelVacaciones.add(new JLabel("Salario Mensual:"));
-        panelVacaciones.add(salarioMensualField);
+    // Añadir el título
+    gbc.gridx = 0;
+    gbc.gridy = 0;
+    gbc.gridwidth = 2;
+    panelVacaciones.add(label, gbc);
 
-        botonCalcularVacaciones = new RoundedButton("Calcular Vacaciones"); // Conservamos este botón y su funcionalidad
-        panelVacaciones.add(botonCalcularVacaciones);
+    // Etiqueta "Salario Mensual"
+    gbc.gridx = 0;
+    gbc.gridy = 1;
+    gbc.gridwidth = 1;
+    panelVacaciones.add(new JLabel("Salario Mensual:"), gbc);
 
-        resultadoDiasLabel = new JLabel("Días de Vacaciones: ");
-        resultadoPagoLabel = new JLabel("Pago de Vacaciones: ");
-        panelVacaciones.add(resultadoDiasLabel);
-        panelVacaciones.add(resultadoPagoLabel);
+    // Campo de texto "Salario Mensual" con ancho reducido
+    salarioMensualField = new RoundedTextField("Salario mensual");
+    salarioMensualField.setPreferredSize(new Dimension(150, 25)); // Reducir ancho del campo de texto
+    gbc.gridx = 1;
+    gbc.gridy = 1;
+    panelVacaciones.add(salarioMensualField, gbc);
 
-        botonRegresarVacaciones = new RoundedButton("Volver al Menú");
-        panelVacaciones.add(botonRegresarVacaciones, BorderLayout.SOUTH);
-    }
+    // Botón "Calcular Vacaciones"
+    botonCalcularVacaciones = new RoundedButton("Calcular Vacaciones");
+    gbc.gridx = 0;
+    gbc.gridy = 2;
+    gbc.gridwidth = 2;
+    panelVacaciones.add(botonCalcularVacaciones, gbc);
 
-    private void initAguinaldoPanel() {
-        panelAguinaldo = new JPanel(new BorderLayout());
-        panelAguinaldo.setBackground(new Color(235, 245, 255)); // Fondo pastel claro
-        panelAguinaldo.setBorder(createRoundedBorder());
-    
-        // Título del panel de aguinaldo
-        JLabel label = new JLabel("Cálculo de Aguinaldo", SwingConstants.CENTER);
-        label.setFont(new Font("Segoe UI", Font.BOLD, 18));
-        label.setForeground(new Color(70, 70, 70));
-        panelAguinaldo.add(label, BorderLayout.NORTH);
-    
-        // Panel central para los campos de entrada de datos
-        JPanel dataInputPanel = new JPanel(new GridLayout(3, 2, 10, 10));
-        dataInputPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
-        dataInputPanel.setBackground(new Color(235, 245, 255));
-    
-        // Campos y etiquetas para ingresar el salario mensual, horas extras y días trabajados
-        JLabel labelSalarioMensual = new JLabel("Salario Mensual:");
-        JTextField fieldSalarioMensual = new RoundedTextField("");  // Campo para salario mensual
-        JLabel labelHorasExtrasMensuales = new JLabel("Horas Extras Mensuales:");
-        JTextField fieldHorasExtrasMensuales = new RoundedTextField("");  // Campo para horas extras
-        JLabel labelDiasTrabajados = new JLabel("Días Trabajados en el Año:");
-        JTextField fieldDiasTrabajados = new RoundedTextField("");  // Campo para días trabajados
-    
-        // Agregar los componentes al panel de entrada de datos
-        dataInputPanel.add(labelSalarioMensual);
-        dataInputPanel.add(fieldSalarioMensual);
-        dataInputPanel.add(labelHorasExtrasMensuales);
-        dataInputPanel.add(fieldHorasExtrasMensuales);
-        dataInputPanel.add(labelDiasTrabajados);
-        dataInputPanel.add(fieldDiasTrabajados);
-    
-        // Añadir el panel de entrada de datos al centro del panel de aguinaldo
-        panelAguinaldo.add(dataInputPanel, BorderLayout.CENTER);
-    
-        // Botón para regresar al menú principal
-        botonRegresarAguinaldo = new RoundedButton("Volver al Menú");
-        panelAguinaldo.add(botonRegresarAguinaldo, BorderLayout.SOUTH);
-    }
-    
+    // Etiqueta de resultado para días de vacaciones
+    resultadoDiasLabel = new JLabel("Días de Vacaciones: ");
+    gbc.gridx = 0;
+    gbc.gridy = 3;
+    gbc.gridwidth = 2;
+    panelVacaciones.add(resultadoDiasLabel, gbc);
+
+    // Etiqueta de resultado para pago de vacaciones
+    resultadoPagoLabel = new JLabel("Pago de Vacaciones: ");
+    gbc.gridx = 0;
+    gbc.gridy = 4;
+    gbc.gridwidth = 2;
+    panelVacaciones.add(resultadoPagoLabel, gbc);
+
+    // Botón para regresar al menú
+    botonRegresarVacaciones = new RoundedButton("Volver al Menú");
+    gbc.gridx = 0;
+    gbc.gridy = 5;
+    gbc.gridwidth = 2;
+    panelVacaciones.add(botonRegresarVacaciones, gbc);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////
+private void initAguinaldoPanel() {
+    panelAguinaldo = new JPanel(new BorderLayout());
+    panelAguinaldo.setBackground(new Color(235, 245, 255)); // Fondo pastel claro
+    panelAguinaldo.setBorder(createRoundedBorder());
+
+    // Panel superior para el título, con espaciado interno
+    JPanel titlePanel = new JPanel();
+    titlePanel.setBackground(new Color(235, 245, 255));
+    titlePanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0)); // Espacio alrededor del título
+
+    JLabel label = new JLabel("Cálculo de Aguinaldo", SwingConstants.CENTER);
+    label.setFont(new Font("Segoe UI", Font.BOLD, 18));
+    label.setForeground(new Color(70, 70, 70));
+    titlePanel.add(label);
+
+    panelAguinaldo.add(titlePanel, BorderLayout.NORTH);
+
+    // Panel central para los campos de entrada de datos
+    JPanel dataInputPanel = new JPanel(new GridBagLayout());
+    dataInputPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+    dataInputPanel.setBackground(new Color(235, 245, 255));
+    GridBagConstraints gbc = new GridBagConstraints();
+    gbc.fill = GridBagConstraints.HORIZONTAL;
+    gbc.insets = new Insets(5, 5, 5, 5);
+
+    // Campo y etiqueta de Salario Mensual
+    JLabel labelSalarioMensual = new JLabel("Salario Mensual:");
+    gbc.gridx = 0;
+    gbc.gridy = 0;
+    gbc.anchor = GridBagConstraints.EAST;
+    dataInputPanel.add(labelSalarioMensual, gbc);
+
+    JTextField fieldSalarioMensual = new RoundedTextField("");
+    fieldSalarioMensual.setPreferredSize(new Dimension(120, 25)); // Tamaño más pequeño
+    gbc.gridx = 1;
+    gbc.anchor = GridBagConstraints.WEST;
+    dataInputPanel.add(fieldSalarioMensual, gbc);
+
+    // Campo y etiqueta de Horas Extras Mensuales
+    JLabel labelHorasExtrasMensuales = new JLabel("Horas Extras Mensuales:");
+    gbc.gridx = 0;
+    gbc.gridy = 1;
+    gbc.anchor = GridBagConstraints.EAST;
+    dataInputPanel.add(labelHorasExtrasMensuales, gbc);
+
+    JTextField fieldHorasExtrasMensuales = new RoundedTextField("");
+    fieldHorasExtrasMensuales.setPreferredSize(new Dimension(120, 25)); // Tamaño más pequeño
+    gbc.gridx = 1;
+    gbc.anchor = GridBagConstraints.WEST;
+    dataInputPanel.add(fieldHorasExtrasMensuales, gbc);
+
+    // Campo y etiqueta de Días Trabajados
+    JLabel labelDiasTrabajados = new JLabel("Días Trabajados en el Año:");
+    gbc.gridx = 0;
+    gbc.gridy = 2;
+    gbc.anchor = GridBagConstraints.EAST;
+    dataInputPanel.add(labelDiasTrabajados, gbc);
+
+    JTextField fieldDiasTrabajados = new RoundedTextField("");
+    fieldDiasTrabajados.setPreferredSize(new Dimension(120, 25)); // Tamaño más pequeño
+    gbc.gridx = 1;
+    gbc.anchor = GridBagConstraints.WEST;
+    dataInputPanel.add(fieldDiasTrabajados, gbc);
+
+    // Botón "Calcular" debajo de los campos de entrada
+    JButton botonCalcular = new RoundedButton("Calcular");
+    gbc.gridx = 0;
+    gbc.gridy = 3;
+    gbc.gridwidth = 2;
+    gbc.anchor = GridBagConstraints.CENTER;
+    dataInputPanel.add(botonCalcular, gbc);
+
+    // Etiqueta para mostrar el resultado del aguinaldo
+    JLabel labelResultadoAguinaldo = new JLabel("Aguinaldo Calculado:");
+    gbc.gridx = 0;
+    gbc.gridy = 4;
+    gbc.gridwidth = 1;
+    gbc.anchor = GridBagConstraints.EAST;
+    dataInputPanel.add(labelResultadoAguinaldo, gbc);
+
+    JLabel resultadoAguinaldo = new JLabel("₡0.00"); // Valor inicial para el resultado
+    resultadoAguinaldo.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+    resultadoAguinaldo.setForeground(new Color(60, 60, 60));
+    gbc.gridx = 1;
+    gbc.anchor = GridBagConstraints.WEST;
+    dataInputPanel.add(resultadoAguinaldo, gbc);
+
+    // Añadir el panel de entrada de datos al centro del panel de aguinaldo
+    panelAguinaldo.add(dataInputPanel, BorderLayout.CENTER);
+
+    // Botón para regresar al menú principal
+    botonRegresarAguinaldo = new RoundedButton("Volver al Menú");
+    JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 10));
+    bottomPanel.setBackground(new Color(235, 245, 255));
+    bottomPanel.add(botonRegresarAguinaldo);
+    panelAguinaldo.add(bottomPanel, BorderLayout.SOUTH);
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////
 
     private void initFormularioPanel() {
         panelFormulario = new JPanel(new GridBagLayout());
