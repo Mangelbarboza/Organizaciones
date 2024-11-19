@@ -16,6 +16,8 @@ public class MenuPrincipal extends JFrame {
     private JButton botonTerminarContinuar;
 
     private JTextField salarioMensualField;
+    private JTextField horasField;
+
     private JLabel resultadoDiasLabel, resultadoPagoLabel;
     public JButton botonCalcularVacaciones;
 
@@ -82,11 +84,17 @@ public class MenuPrincipal extends JFrame {
         JTextField fieldSalarioBruto = new RoundedTextField("");
         JLabel labelDiasTrabajados = new JLabel("Días Trabajados:");
         JTextField fieldDiasTrabajados = new RoundedTextField("");
+        JLabel labelHoras = new JLabel("Horas Extras: ");
+        JTextField fieldHoras = new RoundedTextField("");
+
+
 
         dataInputPanel.add(labelSalarioBruto);
         dataInputPanel.add(fieldSalarioBruto);
         dataInputPanel.add(labelDiasTrabajados);
         dataInputPanel.add(fieldDiasTrabajados);
+        dataInputPanel.add(labelHoras);
+        dataInputPanel.add(fieldHoras);
 
         panelSalarioNeto.add(dataInputPanel, BorderLayout.NORTH);
 
@@ -168,6 +176,9 @@ public class MenuPrincipal extends JFrame {
         puestoField = new RoundedTextField("Desarrollador");
         salarioBrutoField = new RoundedTextField("1500000");
         diasTrabajadosField = new RoundedTextField("286");
+        horasField = new RoundedTextField("286");
+
+        
 
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -201,6 +212,12 @@ public class MenuPrincipal extends JFrame {
 
         gbc.gridx = 0;
         gbc.gridy = 5;
+        panelFormulario.add(new JLabel("Horas Extras:"), gbc);
+        gbc.gridx = 2;
+        panelFormulario.add(horasField, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 6;
         gbc.gridwidth = 2;
         gbc.anchor = GridBagConstraints.CENTER;
         botonTerminarContinuar = new RoundedButton("Guardar y Continuar");
@@ -297,6 +314,7 @@ public class MenuPrincipal extends JFrame {
     public JButton getBotonTerminarContinuar() { return botonTerminarContinuar; }
     public JTextField getSalarioMensualField() { return salarioMensualField; }
     public JTextField getDiasTrabajadosField() { return diasTrabajadosField; }
+    public JTextField getHorasField() { return horasField; }
     public JLabel getResultadoDiasLabel() { return resultadoDiasLabel; }
     public JLabel getResultadoPagoLabel() { return resultadoPagoLabel; }
     public JTextField getNombreField() { return nombreField; }
