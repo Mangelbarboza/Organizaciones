@@ -152,15 +152,42 @@ public class MenuPrincipal extends JFrame {
         panelAguinaldo = new JPanel(new BorderLayout());
         panelAguinaldo.setBackground(new Color(235, 245, 255)); // Fondo pastel claro
         panelAguinaldo.setBorder(createRoundedBorder());
-
+    
+        // Título del panel de aguinaldo
         JLabel label = new JLabel("Cálculo de Aguinaldo", SwingConstants.CENTER);
         label.setFont(new Font("Segoe UI", Font.BOLD, 18));
         label.setForeground(new Color(70, 70, 70));
-        panelAguinaldo.add(label, BorderLayout.CENTER);
-
+        panelAguinaldo.add(label, BorderLayout.NORTH);
+    
+        // Panel central para los campos de entrada de datos
+        JPanel dataInputPanel = new JPanel(new GridLayout(3, 2, 10, 10));
+        dataInputPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
+        dataInputPanel.setBackground(new Color(235, 245, 255));
+    
+        // Campos y etiquetas para ingresar el salario mensual, horas extras y días trabajados
+        JLabel labelSalarioMensual = new JLabel("Salario Mensual:");
+        JTextField fieldSalarioMensual = new RoundedTextField("");  // Campo para salario mensual
+        JLabel labelHorasExtrasMensuales = new JLabel("Horas Extras Mensuales:");
+        JTextField fieldHorasExtrasMensuales = new RoundedTextField("");  // Campo para horas extras
+        JLabel labelDiasTrabajados = new JLabel("Días Trabajados en el Año:");
+        JTextField fieldDiasTrabajados = new RoundedTextField("");  // Campo para días trabajados
+    
+        // Agregar los componentes al panel de entrada de datos
+        dataInputPanel.add(labelSalarioMensual);
+        dataInputPanel.add(fieldSalarioMensual);
+        dataInputPanel.add(labelHorasExtrasMensuales);
+        dataInputPanel.add(fieldHorasExtrasMensuales);
+        dataInputPanel.add(labelDiasTrabajados);
+        dataInputPanel.add(fieldDiasTrabajados);
+    
+        // Añadir el panel de entrada de datos al centro del panel de aguinaldo
+        panelAguinaldo.add(dataInputPanel, BorderLayout.CENTER);
+    
+        // Botón para regresar al menú principal
         botonRegresarAguinaldo = new RoundedButton("Volver al Menú");
         panelAguinaldo.add(botonRegresarAguinaldo, BorderLayout.SOUTH);
     }
+    
 
     private void initFormularioPanel() {
         panelFormulario = new JPanel(new GridBagLayout());
@@ -176,7 +203,7 @@ public class MenuPrincipal extends JFrame {
         puestoField = new RoundedTextField("Desarrollador");
         salarioBrutoField = new RoundedTextField("1500000");
         diasTrabajadosField = new RoundedTextField("286");
-        horasField = new RoundedTextField("286");
+        horasField = new RoundedTextField("6");
 
         
 
@@ -213,7 +240,7 @@ public class MenuPrincipal extends JFrame {
         gbc.gridx = 0;
         gbc.gridy = 5;
         panelFormulario.add(new JLabel("Horas Extras:"), gbc);
-        gbc.gridx = 2;
+        gbc.gridx = 1;
         panelFormulario.add(horasField, gbc);
 
         gbc.gridx = 0;
