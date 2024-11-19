@@ -55,6 +55,7 @@ public class Controlador {
             JOptionPane.showMessageDialog(menu, "Por favor, ingrese valores numéricos válidos.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
     private void guardarDatosEmpleado() {
 
         System.out.printf("Hola desde boton continuar");
@@ -79,7 +80,29 @@ public class Controlador {
 
       
     }
+
+
+    private void calcularAguinaldo() {//Beli
+      /*    try {
+            double salarioMensual = Double.parseDouble(menu.getSalarioMensualField().getText());
+            int diasTrabajados = Integer.parseInt(menu.getDiasTrabajadosField().getText());
     
+            // Crear el objeto Empleado con los datos del formulario
+            Empleado empleado = new Empleado(null, null, null, diasTrabajados, salarioMensual, salarioMensual, diasTrabajados, diasTrabajados, diasTrabajados, false);
+    
+            // Realizar el cálculo de vacaciones usando Logic2
+            int diasVacaciones = Logic2.calcularDiasVacaciones(empleado);
+            double pagoVacaciones = Logic2.calcularPagoVaciones(empleado);
+    
+            // Mostrar los resultados en la interfaz
+            menu.getResultadoDiasLabel().setText("Días de Vacaciones: " + diasVacaciones);
+            menu.getResultadoPagoLabel().setText("Pago de Vacaciones: " + pagoVacaciones);
+    
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(menu, "Por favor, ingrese valores numéricos válidos.", "Error", JOptionPane.ERROR_MESSAGE);
+        }*/
+        
+    }
 
     private void salirPrograma() {
         int confirm = JOptionPane.showConfirmDialog(menu, "¿Está seguro de que desea salir?", "Confirmar Salida", JOptionPane.YES_NO_OPTION);
