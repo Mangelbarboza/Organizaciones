@@ -14,7 +14,7 @@ public class Controlador {
 
     public Controlador(MenuPrincipal menu) {
         this.menu = menu;
-        this.logic1 = new logic1(menu);
+        this.logic1 = new logic1(menu.salarioNetoPanel);
         this.logic2 = new Logic2(menu);
         this.logic3 = new Logic3();
         initController();
@@ -28,6 +28,9 @@ public class Controlador {
         menu.menuPanel.getBotonVacaciones().addActionListener(e -> layout.show(menu.getContentPane(), "vacaciones"));
         menu.menuPanel.getBotonAguinaldo().addActionListener(e -> layout.show(menu.getContentPane(), "aguinaldo"));
         menu.menuPanel.getBotonSalir().addActionListener(e -> salirPrograma());
+
+          // Botón de cálculo en SalarioNetoPanel
+          menu.salarioNetoPanel.getBotonCalcularSalarioNeto().addActionListener(e -> logic1.calcularSalarioNeto());
 
         // Botones de regresar en cada panel
         menu.salarioNetoPanel.getBotonRegresarSalario().addActionListener(e -> layout.show(menu.getContentPane(), "menu"));
