@@ -78,7 +78,7 @@ public class Controlador {
             // Obtener datos del panel de aguinaldo
             double salarioMensual = Double.parseDouble(menu.aguinaldoPanel.getSalarioMensualField().getText());
             int horasExtrasMensuales = Integer.parseInt(menu.aguinaldoPanel.getHorasExtrasField().getText());
-            int diasTrabajados = Integer.parseInt(menu.aguinaldoPanel.getDiasTrabajadosField().getText());
+            int diasTrabajados = Integer.parseInt(menu.aguinaldoPanel.getMesesTrabajadosField().getText());
 
             // Calcular aguinaldo usando Logic3
             double aguinaldoCalculado = logic3.calcularAguinaldo(salarioMensual, horasExtrasMensuales, diasTrabajados);

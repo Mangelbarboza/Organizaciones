@@ -5,7 +5,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 
 public class AguinaldoPanel extends JPanel {
-    private JTextField salarioMensualField, horasExtrasField, diasTrabajadosField;
+    private JTextField salarioMensualField, horasExtrasField, mesesTrabajadosField;
     public JButton botonCalcularAguinaldo, botonRegresarAguinaldo;
     public JLabel resultadoAguinaldoLabel;
 
@@ -37,14 +37,14 @@ public class AguinaldoPanel extends JPanel {
         gbc.gridx = 1;
         add(horasExtrasField, gbc);
 
-        // Etiqueta y campo de texto para los Días Trabajados en el Año
+        // Etiqueta y campo de texto para los Meses Trabajados en el Año
         gbc.gridx = 0;
         gbc.gridy = 2;
-        add(new JLabel("Días Trabajados en el Año:"), gbc);
-        diasTrabajadosField = new RoundedTextField("");  // Inicializa el JTextField
-        diasTrabajadosField.setPreferredSize(new Dimension(150, 25));
+        add(new JLabel("Meses Trabajados en el Año:"), gbc);
+        mesesTrabajadosField = new RoundedTextField("");  // Inicializa el JTextField
+        mesesTrabajadosField.setPreferredSize(new Dimension(150, 25));
         gbc.gridx = 1;
-        add(diasTrabajadosField, gbc);
+        add(mesesTrabajadosField, gbc);
 
         // Botón para calcular aguinaldo
         gbc.gridx = 0;
@@ -67,7 +67,7 @@ public class AguinaldoPanel extends JPanel {
     // Getters para acceder a los campos de texto y botones desde el controlador
     public JTextField getSalarioMensualField() { return salarioMensualField; }
     public JTextField getHorasExtrasField() { return horasExtrasField; }
-    public JTextField getDiasTrabajadosField() { return diasTrabajadosField; }
+    public JTextField getMesesTrabajadosField() { return mesesTrabajadosField; }
     public JButton getBotonCalcularAguinaldo() { return botonCalcularAguinaldo; }
     public JLabel getResultadoAguinaldoLabel() { return resultadoAguinaldoLabel; }
     public JButton getBotonRegresarAguinaldo() { return botonRegresarAguinaldo; }
