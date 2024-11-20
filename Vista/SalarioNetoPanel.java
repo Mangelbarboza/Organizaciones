@@ -3,11 +3,14 @@ package Vista;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.Border;
+@SuppressWarnings("FieldMayBeFinal")
 
 public class SalarioNetoPanel extends JPanel {
     private JTextField fieldSalarioBruto, fieldDiasTrabajados, fieldHoras;
     private JTextField fieldSalarioNetoCalculado, fieldCargasSociales, fieldRentaDeducida;
-    private JButton botonRegresarSalario, botonCalcularSalarioNeto;
+    
+    private JButton botonRegresarSalario;
+    private JButton botonCalcularSalarioNeto;
 
     public SalarioNetoPanel() {
         setLayout(new BorderLayout());
