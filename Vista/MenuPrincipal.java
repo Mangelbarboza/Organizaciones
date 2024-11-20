@@ -1,8 +1,8 @@
 package Vista;
 
+import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.Border;
-import java.awt.*;
 
 public class MenuPrincipal extends JFrame {
     private CardLayout cardLayout;
@@ -103,17 +103,7 @@ public class MenuPrincipal extends JFrame {
         calculatorPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
         calculatorPanel.setBackground(new Color(235, 245, 255));
 
-        String[] buttons = {
-            "7", "8", "9",
-            "4", "5", "6",
-            "1", "2", "3",
-            "0", ".", "="
-        };
-
-        for (String text : buttons) {
-            JButton button = new CircularButton(text);
-            calculatorPanel.add(button);
-        }
+      
 
         panelSalarioNeto.add(calculatorPanel, BorderLayout.CENTER);
 
@@ -420,15 +410,7 @@ private void initAguinaldoPanel() {
 
     // Clase personalizada para JButton circular
     private class CircularButton extends JButton {
-        public CircularButton(String text) {
-            super(text);
-            setFocusPainted(false);
-            setFont(new Font("Segoe UI", Font.PLAIN, 16));
-            setBackground(new Color(150, 200, 230)); // Color pastel
-            setForeground(Color.DARK_GRAY);
-            setOpaque(false);
-            setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        }
+       
 
         @Override
         protected void paintComponent(Graphics g) {
