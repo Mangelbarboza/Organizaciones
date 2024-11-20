@@ -19,6 +19,7 @@ public class MenuPrincipal extends JFrame {
         cardLayout = new CardLayout();
         setLayout(cardLayout);
 
+        
         menuPanel = new MenuPanel();
         salarioNetoPanel = new SalarioNetoPanel();
         vacacionesPanel = new VacacionesPanel();

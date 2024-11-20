@@ -16,10 +16,10 @@ public class logic1 {
             int diasTrabajados = Integer.parseInt(UI.getFieldDiasTrabajados().getText());
             int horasExtras = Integer.parseInt(UI.getFieldHoras().getText());
 
-            // Calcular cargas sociales
+            // Calcular cargas sociales con el porcentaje de 10.67%
             double cargasSociales = calcularCargasSociales(salarioBruto);
 
-            // Calcular renta si aplica
+            // Calcular renta si aplica, con un porcentaje ajustado según la normativa vigente
             double rentaDeducida = calcularRenta(salarioBruto);
 
             // Calcular salario neto
@@ -37,13 +37,13 @@ public class logic1 {
 
     // Método para calcular las cargas sociales según el salario bruto
     private double calcularCargasSociales(double salarioBruto) {
-        double porcentajeCargasSociales = 0.09; // 9% como ejemplo, ajustar según la ley
+        double porcentajeCargasSociales = 0.1067; // 10.67% basado en la imagen proporcionada
         return salarioBruto * porcentajeCargasSociales;
     }
 
     // Método para calcular la renta deducida si aplica, según el salario bruto
     private double calcularRenta(double salarioBruto) {
-        double porcentajeRenta = 0.15; // 15% como ejemplo, ajustar según la normativa vigente
+        double porcentajeRenta = 0.10; // Ajustar según el umbral actual de renta
         boolean aplicaRenta = salarioBruto > 500000; // ejemplo: renta aplicable a salarios mayores a ₡500,000
         return aplicaRenta ? salarioBruto * porcentajeRenta : 0.0;
     }
