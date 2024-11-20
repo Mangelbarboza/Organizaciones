@@ -6,15 +6,12 @@ import Vista.MenuPrincipal;
 
 public class Main {  
 
-   //afwfe dfwfwqv gfg
 
     public static void main(String[] args) {
     
-        // Iniciar interfaz
         MenuPrincipal menu = new MenuPrincipal();
         menu.setVisible(true);
         
-        // Crear controladora
       Controlador controller = new Controlador(menu);
        
     }

@@ -3,6 +3,9 @@ package Controladora;
 import Modelo.*;
 import Vista.*;
 import java.awt.*;
+import java.text.NumberFormat;
+import java.util.Locale;
+
 import javax.swing.*;
 
 public class Controlador {
@@ -83,7 +86,12 @@ public class Controlador {
             // Calcular aguinaldo usando Logic3
             double aguinaldoCalculado = logic3.calcularAguinaldo(salarioMensual, horasExtrasMensuales, diasTrabajados);
 
-            menu.aguinaldoPanel.getResultadoAguinaldoLabel().setText("Aguinaldo Calculado: ₡" + aguinaldoCalculado);
+             // Formatear el resultado con comas
+            NumberFormat formatter = NumberFormat.getNumberInstance(Locale.US);
+            String aguinaldoFormateado = formatter.format(aguinaldoCalculado);
+
+             // Mostrar el resultado en la interfaz 
+             menu.aguinaldoPanel.getResultadoAguinaldoLabel().setText("Aguinaldo Calculado: ₡" + aguinaldoFormateado);
 
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(menu, "Por favor, ingrese valores numéricos válidos.", "Error", JOptionPane.ERROR_MESSAGE);
