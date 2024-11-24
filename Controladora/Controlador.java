@@ -3,9 +3,6 @@ package Controladora;
 import Modelo.*;
 import Vista.*;
 import java.awt.*;
-import java.text.NumberFormat;
-import java.util.Locale;
-
 import javax.swing.*;
 
 public class Controlador {
@@ -32,11 +29,11 @@ public class Controlador {
         menu.menuPanel.getBotonAguinaldo().addActionListener(e -> layout.show(menu.getContentPane(), "aguinaldo"));
         menu.menuPanel.getBotonSalir().addActionListener(e -> salirPrograma());
 
-          // Botón de cálculo en SalarioNetoPanel
-          menu.salarioNetoPanel.getBotonCalcularSalarioNeto().addActionListener(e -> logic1.calcularSalarioNeto());
+        // Botón de cálculo en SalarioNetoPanel
+        menu.salarioNetoPanel.getBotonCalcular().addActionListener(e -> logic1.calcularSalarioNeto());
 
         // Botones de regresar en cada panel
-        menu.salarioNetoPanel.getBotonRegresarSalario().addActionListener(e -> layout.show(menu.getContentPane(), "menu"));
+        menu.salarioNetoPanel.getBotonVolver().addActionListener(e -> layout.show(menu.getContentPane(), "menu"));
         menu.vacacionesPanel.getBotonRegresarVacaciones().addActionListener(e -> layout.show(menu.getContentPane(), "menu"));
         menu.aguinaldoPanel.getBotonRegresarAguinaldo().addActionListener(e -> layout.show(menu.getContentPane(), "menu"));
 
@@ -86,12 +83,8 @@ public class Controlador {
             // Calcular aguinaldo usando Logic3
             double aguinaldoCalculado = logic3.calcularAguinaldo(salarioMensual, horasExtrasMensuales, diasTrabajados);
 
-             // Formatear el resultado con comas
-            NumberFormat formatter = NumberFormat.getNumberInstance(Locale.US);
-            String aguinaldoFormateado = formatter.format(aguinaldoCalculado);
-
-             // Mostrar el resultado en la interfaz 
-             menu.aguinaldoPanel.getResultadoAguinaldoLabel().setText("Aguinaldo Calculado: ₡" + aguinaldoFormateado);
+            // Mostrar el resultado en la interfaz
+            menu.aguinaldoPanel.getResultadoAguinaldoLabel().setText("Aguinaldo Calculado: ₡" + String.format("%.2f", aguinaldoCalculado));
 
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(menu, "Por favor, ingrese valores numéricos válidos.", "Error", JOptionPane.ERROR_MESSAGE);
