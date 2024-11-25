@@ -11,6 +11,7 @@ public class Controlador {
     private logic1 logic1;
     private Logic2 logic2;
     private Logic3 logic3;
+    private Empleado empleado;
 
     public Controlador(MenuPrincipal menu) {
         this.menu = menu;
@@ -42,6 +43,8 @@ public class Controlador {
 
         // Acción del botón de calcular aguinaldo
         menu.aguinaldoPanel.getBotonCalcularAguinaldo().addActionListener(e -> calcularAguinaldo());
+
+        menu.formulario.getBotonGuardarContinuar().addActionListener(e-> validarEmpleado(layout));
     }
 
     private void calcularVacaciones() {
@@ -96,5 +99,24 @@ public class Controlador {
         if (confirm == JOptionPane.YES_OPTION) {
             System.exit(0);
         }
+    }
+
+    private void validarEmpleado(CardLayout layout) {
+        // Obtener los datos para crear el empleado
+        String nombre = menu.formulario.getNombreField().getText();
+        String cedula = menu.formulario.getCedulaField().getText();
+        String puesto = menu.formulario.getPuestoField().getText();
+        double salarioBruto = Double.parseDouble(menu.formulario.getSalarioBrutoField().getText());
+
+        // Crear el objeto Empleado
+        empleado = new Empleado(nombre, cedula, puesto, salarioBruto, 0, salarioBruto, 0, 0, 0, false);
+
+        System.out.println("Empleado creado: " + empleado.toString());
+
+        // ocultar el formulario y mostrar el menú
+        menu.formulario.setVisible(false);
+
+        // Mostrar el menú
+        layout.show(menu.getContentPane(), "menu");
     }
 }

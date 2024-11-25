@@ -61,4 +61,21 @@ public class Empleado {
 
     public boolean isAplicaRenta() { return aplicaRenta; }
     public void setAplicaRenta(boolean aplicaRenta) { this.aplicaRenta = aplicaRenta; }
+
+    // Tostring para imprimir los datos del empleado
+    @Override
+    public String toString() {
+        return "Empleado{" +
+                "nombre='" + nombre + '\'' +
+                ", cedula='" + cedula + '\'' +
+                ", puesto='" + puesto + '\'' +
+                ", salarioDiario=" + salarioDiario +
+                ", salarioMensual=" + salarioMensual +
+                ", salarioBruto=" + salarioBruto +
+                ", aniosTrabajados=" + aniosTrabajados +
+                ", diasTrabajados=" + diasTrabajados +
+                ", horasExtras=" + horasExtras +
+                ", aplicaRenta=" + aplicaRenta +
+                '}';
+    }
 }

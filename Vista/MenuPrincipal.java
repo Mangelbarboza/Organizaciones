@@ -9,6 +9,7 @@ public class MenuPrincipal extends JFrame {
     public SalarioNetoPanel salarioNetoPanel;
     public VacacionesPanel vacacionesPanel;
     public AguinaldoPanel aguinaldoPanel; // Nuevo panel de aguinaldo
+    public Formulario formulario;
 
     public MenuPrincipal() {
         setTitle("Sistema de Cálculo Laboral");
@@ -19,12 +20,14 @@ public class MenuPrincipal extends JFrame {
         cardLayout = new CardLayout();
         setLayout(cardLayout);
 
-        
+        formulario = new Formulario();
         menuPanel = new MenuPanel();
         salarioNetoPanel = new SalarioNetoPanel();
         vacacionesPanel = new VacacionesPanel();
         aguinaldoPanel = new AguinaldoPanel(); // Instancia de AguinaldoPanel
 
+
+        add(formulario, "formulario");
         add(menuPanel, "menu");
         add(salarioNetoPanel, "salarioNeto");
         add(vacacionesPanel, "vacaciones");
