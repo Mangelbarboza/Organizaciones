@@ -44,7 +44,7 @@ public class Empleado {
     public double getSalarioBruto() { return salarioBruto; }
     public void setSalarioBruto(double salarioBruto) { this.salarioBruto = salarioBruto; }
 
-    public double getSalarioDiario() { return salarioDiario; }
+    public double getSalarioDiario() { return salarioDiario  ; }
     public void setSalarioDiario(double salarioDiario) { this.salarioDiario = salarioDiario; }
 
     public double getSalarioMensual() { return salarioMensual; }

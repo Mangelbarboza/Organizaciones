@@ -107,6 +107,7 @@ public class Controlador {
         String cedula = menu.formulario.getCedulaField().getText();
         String puesto = menu.formulario.getPuestoField().getText();
         double salarioBruto = Double.parseDouble(menu.formulario.getSalarioBrutoField().getText());
+        
 
         // Crear el objeto Empleado
         empleado = new Empleado(nombre, cedula, puesto, salarioBruto, 0, salarioBruto, 0, 0, 0, false);

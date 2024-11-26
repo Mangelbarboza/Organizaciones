@@ -10,14 +10,21 @@ public class Logic2 {
     }
 
     public int calcularDiasVacaciones(Empleado empleado) {
-        // Lógica para calcular días de vacaciones
-        int diasVacaciones = (int) (empleado.getDiasTrabajados() / 365.0 * 12);  // Ejemplo: 1 día por cada 12 días trabajados
+        // 1 día de vacaciones por cada 26 días trabajados
+        int diasVacaciones = empleado.getDiasTrabajados() / 26;
         return diasVacaciones;
     }
 
     public double calcularPagoVacaciones(Empleado empleado) {
         // Lógica para calcular el pago de vacaciones
         double pagoVacaciones = calcularDiasVacaciones(empleado) * empleado.getSalarioDiario();
+
+    
+        // Para verificar en consola durante pruebas
+        System.out.println("Días de Vacaciones: " + calcularDiasVacaciones(empleado));
+        System.out.println("Salario Diario: " + empleado.getSalarioDiario());
+        System.out.println("Pago Vacaciones: " + pagoVacaciones);
+
         return pagoVacaciones;
     }
 }
