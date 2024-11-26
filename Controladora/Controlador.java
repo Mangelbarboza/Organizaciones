@@ -57,11 +57,12 @@ public class Controlador {
                 throw new NumberFormatException("Los campos están vacíos.");
             }
 
-            double salarioMensual = Double.parseDouble(salarioMensualTexto);
+            double salarioMensual = Double.parseDouble(salarioMensualTexto.replace(".", "").replace(",", "."));
             int diasTrabajados = Integer.parseInt(diasTrabajadosTexto);
 
             // Crear un objeto Empleado para el cálculo
-            Empleado empleado = new Empleado(null, null, null, 0, salarioMensual, salarioMensual, 0, diasTrabajados, 0, false);
+            Empleado empleado = new Empleado(null, null, null, salarioMensual / 30, salarioMensual, salarioMensual, 0, diasTrabajados, 0, false);
+
 
             // Usar Logic2 para calcular días y pago de vacaciones
             int diasVacaciones = logic2.calcularDiasVacaciones(empleado);
@@ -69,7 +70,8 @@ public class Controlador {
 
             // Mostrar los resultados en la interfaz
             menu.vacacionesPanel.getResultadoDiasLabel().setText("Días de Vacaciones: " + diasVacaciones);
-            menu.vacacionesPanel.getResultadoPagoLabel().setText("Pago de Vacaciones: " + pagoVacaciones);
+            menu.vacacionesPanel.getResultadoPagoLabel().setText("Pago de Vacaciones: " + String.format("%.2f", pagoVacaciones));
+
 
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(menu, "Por favor, ingrese valores numéricos válidos.", "Error", JOptionPane.ERROR_MESSAGE);
