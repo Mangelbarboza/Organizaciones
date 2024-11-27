@@ -17,7 +17,7 @@ public class Controlador {
         this.menu = menu;
         this.logic1 = new logic1(menu.salarioNetoPanel);
         this.logic2 = new Logic2(menu);
-        this.logic3 = new Logic3();
+        this.logic3 = new Logic3(menu.aguinaldoPanel.getSalarioMensualFields(),menu.aguinaldoPanel.getResultadoAguinaldoLabel());
         initController();
     }
 
@@ -57,12 +57,11 @@ public class Controlador {
                 throw new NumberFormatException("Los campos están vacíos.");
             }
 
-            double salarioMensual = Double.parseDouble(salarioMensualTexto.replace(".", "").replace(",", "."));
+            double salarioMensual = Double.parseDouble(salarioMensualTexto);
             int diasTrabajados = Integer.parseInt(diasTrabajadosTexto);
 
             // Crear un objeto Empleado para el cálculo
-            Empleado empleado = new Empleado(null, null, null, salarioMensual / 30, salarioMensual, salarioMensual, 0, diasTrabajados, 0, false);
-
+            Empleado empleado = new Empleado(null, null, null, 0, salarioMensual, salarioMensual, 0, diasTrabajados, 0, false);
 
             // Usar Logic2 para calcular días y pago de vacaciones
             int diasVacaciones = logic2.calcularDiasVacaciones(empleado);
@@ -70,8 +69,7 @@ public class Controlador {
 
             // Mostrar los resultados en la interfaz
             menu.vacacionesPanel.getResultadoDiasLabel().setText("Días de Vacaciones: " + diasVacaciones);
-            menu.vacacionesPanel.getResultadoPagoLabel().setText("Pago de Vacaciones: " + String.format("%.2f", pagoVacaciones));
-
+            menu.vacacionesPanel.getResultadoPagoLabel().setText("Pago de Vacaciones: " + pagoVacaciones);
 
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(menu, "Por favor, ingrese valores numéricos válidos.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -79,22 +77,11 @@ public class Controlador {
     }
 
     private void calcularAguinaldo() {
-        try {
-            // Obtener datos del panel de aguinaldo
-            double salarioMensual = Double.parseDouble(menu.aguinaldoPanel.getSalarioMensualField().getText());
-            int horasExtrasMensuales = Integer.parseInt(menu.aguinaldoPanel.getHorasExtrasField().getText());
-            int diasTrabajados = Integer.parseInt(menu.aguinaldoPanel.getMesesTrabajadosField().getText());
 
-            // Calcular aguinaldo usando Logic3
-            double aguinaldoCalculado = logic3.calcularAguinaldo(salarioMensual, horasExtrasMensuales, diasTrabajados);
+       logic3.actualizarAguinaldo();
 
-            // Mostrar el resultado en la interfaz
-            menu.aguinaldoPanel.getResultadoAguinaldoLabel().setText("Aguinaldo Calculado: ₡" + String.format("%.2f", aguinaldoCalculado));
-
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(menu, "Por favor, ingrese valores numéricos válidos.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
     }
+    
 
     private void salirPrograma() {
         int confirm = JOptionPane.showConfirmDialog(menu, "¿Está seguro de que desea salir?", "Confirmar Salida", JOptionPane.YES_NO_OPTION);
