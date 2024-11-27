@@ -16,13 +16,13 @@ public class Logic2 {
     }
 
     public double calcularPagoVacaciones(Empleado empleado) {
-        // Lógica para calcular el pago de vacaciones
-        double pagoVacaciones = calcularDiasVacaciones(empleado) * empleado.getSalarioDiario();
+        // Dividir el salario mensual entre 30 y multiplicar por los días de vacaciones
+        double salarioDiario = empleado.getSalarioMensual() / 30;
+        double pagoVacaciones = calcularDiasVacaciones(empleado) * salarioDiario;
 
-    
         // Para verificar en consola durante pruebas
         System.out.println("Días de Vacaciones: " + calcularDiasVacaciones(empleado));
-        System.out.println("Salario Diario: " + empleado.getSalarioDiario());
+        System.out.println("Salario Diario: " + salarioDiario);
         System.out.println("Pago Vacaciones: " + pagoVacaciones);
 
         return pagoVacaciones;

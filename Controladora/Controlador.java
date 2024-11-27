@@ -11,7 +11,7 @@ public class Controlador {
     private logic1 logic1;
     private Logic2 logic2;
     private Logic3 logic3;
-    private Empleado empleado;
+    private Empleado empleado; // Asegúrate de tener una referencia al empleado
 
     public Controlador(MenuPrincipal menu) {
         this.menu = menu;
@@ -60,8 +60,9 @@ public class Controlador {
             double salarioMensual = Double.parseDouble(salarioMensualTexto);
             int diasTrabajados = Integer.parseInt(diasTrabajadosTexto);
 
-            // Crear un objeto Empleado para el cálculo
-            Empleado empleado = new Empleado(null, null, null, 0, salarioMensual, salarioMensual, 0, diasTrabajados, 0, false);
+            // Actualizar los datos del empleado existente
+            empleado.setSalarioMensual(salarioMensual);
+            empleado.setDiasTrabajados(diasTrabajados);
 
             // Usar Logic2 para calcular días y pago de vacaciones
             int diasVacaciones = logic2.calcularDiasVacaciones(empleado);
